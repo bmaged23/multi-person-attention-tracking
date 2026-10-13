@@ -1,49 +1,36 @@
-"""Fetch two CC BY 4.0 AMI meeting excerpts for a redistributable demo."""
+"""Download checksum-verified CC BY 4.0 single-camera RWEAD audience clips."""
 
+import hashlib
+import json
 from pathlib import Path
-import subprocess
 import urllib.request
 
 ROOT = Path(__file__).resolve().parents[2]
-BASE = "https://groups.inf.ed.ac.uk/ami/AMICorpusMirror/amicorpus/IS1004d/video/"
 
 
 def main():
-    destination = ROOT / "input/ami"
+    provenance = json.loads((ROOT / "docs/rwead_provenance.json").read_text())
+    destination = ROOT / "input/rwead"
     destination.mkdir(parents=True, exist_ok=True)
-    for view in ["L", "R"]:
-        output = destination / f"IS1004d_{view}.mp4"
-        subprocess.run(
-            [
-                "ffmpeg",
-                "-y",
-                "-v",
-                "error",
-                "-rw_timeout",
-                "30000000",
-                "-ss",
-                "60",
-                "-i",
-                BASE + f"IS1004d.{view}_orig.avi",
-                "-t",
-                "12",
-                "-an",
-                "-c:v",
-                "libx264",
-                "-crf",
-                "16",
-                "-pix_fmt",
-                "yuv420p",
-                str(output),
-            ],
-            check=True,
-        )
-    urllib.request.urlretrieve(
-        "https://groups.inf.ed.ac.uk/ami/download/CCBY4.0.txt",
-        destination / "CCBY4.0.txt",
-    )
-    print("Prepared native-resolution AMI CC BY 4.0 meeting excerpts:", destination)
-    print("Attribution and modification details: docs/DEMO_SOURCE.md")
+    for source in provenance["files"]:
+        output = destination / source["filename"]
+        if not output.exists():
+            temporary = output.with_suffix(".download")
+            try:
+                urllib.request.urlretrieve(source["url"], temporary)
+                with temporary.open("rb") as stream:
+                    checksum = hashlib.file_digest(stream, "sha256").hexdigest()
+                if checksum != source["sha256"]:
+                    raise RuntimeError(f"Checksum mismatch: {source['filename']}")
+                temporary.replace(output)
+            finally:
+                temporary.unlink(missing_ok=True)
+        with output.open("rb") as stream:
+            checksum = hashlib.file_digest(stream, "sha256").hexdigest()
+        if checksum != source["sha256"]:
+            raise RuntimeError(f"Checksum mismatch: {source['filename']}")
+        print(output)
+    print("RWEAD CC BY 4.0; source attribution: docs/DEMO_SOURCE.md")
 
 
 if __name__ == "__main__":

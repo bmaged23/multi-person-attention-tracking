@@ -1,0 +1,23 @@
+{
+  "dataset": "RWEAD 1.0",
+  "source": "https://sites.google.com/view/rwead/rwead-1-0",
+  "osf": "https://osf.io/453sh/",
+  "license": "CC BY 4.0",
+  "license_metadata": "https://api.osf.io/v2/licenses/563c1cf88c5e4a3877f9e96a/",
+  "files": [
+    {
+      "film": 8,
+      "filename": "Set2_camera1_film8.mp4",
+      "url": "https://osf.io/download/69525147e7e029ec3a5fa617/",
+      "sha256": "22eba41289ab2482ef189422a818c56fb8edcac728eca9501ab5803e57410c78",
+      "osf_path": "Corporate/Amphitheatre/Engagement Amphitheatre/Set2/camera1_audience/film_8.mp4"
+    },
+    {
+      "film": 51,
+      "filename": "Set2_camera1_film51.mp4",
+      "url": "https://osf.io/download/69525153ba53f053f511d046/",
+      "sha256": "183cdc904cd5889f2db3a6d36cf85f2a61cf636ba4d0519759b129319c197588",
+      "osf_path": "Corporate/Amphitheatre/Engagement Amphitheatre/Set2/camera1_audience/film_51.mp4"
+    }
+  ]
+}

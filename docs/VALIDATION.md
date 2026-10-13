@@ -76,14 +76,18 @@ but reported llvmpipe software rendering. That did not replace the original
 CPU path or establish NVIDIA hardware acceleration. Physical-camera/RTSP and
 hardware GPU capture/inference remain unverified here.
 
-## Public AMI demo
+## Public single-camera RWEAD demo
 
-Two 12-second native 720×576, 25 FPS excerpts from AMI meeting IS1004d
-were processed with the unchanged default settings. Their annotated output
-is combined into a 600-frame, 24-second H.264 MP4 and an infinitely looping
-192-frame, 8 FPS GIF. Full combined-video decoding, dimensions, frame counts,
-GIF loop metadata and repository asset sizes are verified.
+Two eight-second, native 1920×1080, 20 FPS excerpts from RWEAD 1.0 Set2,
+camera1_audience, show five people together in one physical camera view.
+Film 8 annotated all five faces in all 160 frames. Film 51 contains motion and
+occlusion; most frames have five face observations, with occasional misses or
+duplicates. These counts are not ground-truth recall or attention accuracy.
 
-Source credit and CC BY 4.0 modification details are in DEMO_SOURCE.md;
-measurements are in evaluation/public_demo_validation.json. These clips are
-qualitative demonstrations, not a ground-truth attention-accuracy benchmark.
+The combined MP4 has 320 frames and lasts 16 seconds. The native-resolution GIF
+has 96 frames at 6 FPS and infinite looping. Full MP4 decoding, dimensions,
+frame counts, GIF loop metadata and file-size limits are verified.
+Source license and modifications are in DEMO_SOURCE.md; measurements are in
+evaluation/public_demo_validation.json. Earlier AMI metrics are historical and
+recorded in evaluation/historical/ami_demo_validation.json. The scoring and
+inference configuration have not changed for the replacement footage.

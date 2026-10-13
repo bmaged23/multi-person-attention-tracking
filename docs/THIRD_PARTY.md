@@ -33,7 +33,12 @@ Use your own or suitably licensed videos for a public portfolio demonstration.
 
 ## Redistributable public demo
 
-AMI Meeting Corpus, AMI Consortium: https://groups.inf.ed.ac.uk/ami/download/
-Video signals are CC BY 4.0. The public README media uses trimmed, annotated
-left/right camera excerpts from IS1004d, with credit and modification details
-in DEMO_SOURCE.md. The official license text is under licenses/AMI_CC_BY_4.0.txt.
+RWEAD 1.0: https://sites.google.com/view/rwead/rwead-1-0
+Official repository: https://osf.io/453sh/
+The dataset and OSF metadata specify CC BY 4.0. The README uses annotated
+camera1_audience excerpts from Set2, film 8 and film 51. Source credit and
+modification details are in DEMO_SOURCE.md; the official license text is under
+licenses/RWEAD_CC_BY_4.0.txt. Provenance and checksums are in rwead_provenance.json.
+
+The earlier AMI Meeting Corpus samples remain local under their CC BY 4.0
+license. Their original source is https://groups.inf.ed.ac.uk/ami/download/.

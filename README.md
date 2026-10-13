@@ -14,13 +14,14 @@ Names such as Person 1 are spatial labels; no face recognition or enrollment is 
 
 ## Demo
 
-![Looping multi-person attention demo from two AMI meeting cameras](docs/media/attention-demo.gif)
+![Looping single-camera classroom audience attention demo](docs/media/attention-demo.gif)
 
-Two meeting-camera views with face-only boxes, session-local names and attention
-labels. **Left view → right view → repeat.**
+**Five people together in one camera view**, across two amphitheatre seating
+arrangements. Face-only boxes, session-local names and attention labels;
+the combined preview repeats continuously.
 
-Source: AMI Meeting Corpus (AMI Consortium), **CC BY 4.0**. Excerpts are trimmed,
-annotated and combined; these labels are our heuristic results.
+Source: **RWEAD 1.0**, Lemos, Cardoso, Rodrigues and collaborators, **CC BY 4.0**.
+Excerpts are trimmed, annotated and combined; labels are our heuristic results.
 [Attribution and modifications](docs/DEMO_SOURCE.md) · [Full-resolution MP4](docs/media/attention-demo.mp4)
 
 ## Pipeline
@@ -206,30 +207,31 @@ and are never used as the visible annotation rectangle.
 
 ## Reproduce the public demo
 
-The public demo uses AMI meeting footage released under CC BY 4.0, with full
+The public demo uses **RWEAD 1.0**, a CC BY 4.0 amphitheatre attention dataset.
+Both excerpts show five people together from **camera1_audience**, with
 [source attribution and modification details](docs/DEMO_SOURCE.md). The earlier
 research-only classroom footage stays local and is not part of the README demo.
 
 ```bash
 python scripts/datasets/prepare_public_demo.py
-python video_attention.py --video input/ami/IS1004d_L.mp4 \
-  --output output/ami/IS1004d_L.json \
-  --annotated-video output/ami/IS1004d_L_annotated.mp4
-python video_attention.py --video input/ami/IS1004d_R.mp4 \
-  --output output/ami/IS1004d_R.json \
-  --annotated-video output/ami/IS1004d_R_annotated.mp4
+python video_attention.py --video input/rwead/Set2_camera1_film8.mp4 \
+  --max-seconds 8 --output output/rwead/film8.json \
+  --annotated-video output/rwead/film8_annotated.mp4
+python video_attention.py --video input/rwead/Set2_camera1_film51.mp4 \
+  --max-seconds 8 --output output/rwead/film51.json \
+  --annotated-video output/rwead/film51_annotated.mp4
 python scripts/build_video_demo.py \
-  --videos output/ami/IS1004d_L_annotated.mp4 output/ami/IS1004d_R_annotated.mp4 \
-  --output-dir docs/media --preview-width 720 --preview-fps 8
+  --videos output/rwead/film8_annotated.mp4 output/rwead/film51_annotated.mp4 \
+  --output-dir docs/media --preview-width 1920 --preview-fps 6
 ```
 
-The combined MP4 retains 720×576 at 25 FPS. The looping GIF uses the same
-resolution at 8 FPS. IDs restart for the second camera; people are not identified
-across views. The GIF loops automatically where animation playback is enabled.
+The combined MP4 retains **1920×1080 at 20 FPS**. The looping GIF retains the
+same resolution at 6 FPS. IDs restart for the second recording; people are not
+identified across clips. The GIF loops where animation playback is enabled.
 The generator also creates a local autoplay/muted/loop HTML player.
 
 For your own recordings, supply `--videos first.mp4 second.mp4` and an output
-folder such as `output/demo`. Keep the attribution with any AMI-derived media.
+folder such as `output/demo`. Keep the attribution with any RWEAD-derived media.
 
 ## Structure
 
