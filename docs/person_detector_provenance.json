@@ -1,0 +1,8 @@
+{
+  "model": "YOLOv8n COCO ONNX",
+  "source": "https://huggingface.co/webml/yolov8n",
+  "revision": "85bc8d7ab30d4065a41909d756c42819b67b4388",
+  "sha256": "190ba5f1e61411a001683e349d6b2cdb0804c0dc67a5e34cd8ff6fd00ee54b4d",
+  "runtime": "OpenCV DNN CPU",
+  "purpose": "person boxes only; no recognition"
+}

@@ -1,0 +1,31 @@
+[
+  {
+    "video": "negative_0021",
+    "frames": 118,
+    "tracks": 2,
+    "observations": 154,
+    "max_simultaneous_faces": 2,
+    "labels": {
+      "attentive": 94,
+      "inattentive": 53,
+      "eyes_closed": 7
+    },
+    "duplicate_pairs": 0,
+    "decode": "passed"
+  },
+  {
+    "video": "handShake_0036",
+    "frames": 291,
+    "tracks": 7,
+    "observations": 314,
+    "max_simultaneous_faces": 2,
+    "labels": {
+      "inattentive": 155,
+      "partial": 50,
+      "attentive": 102,
+      "eyes_closed": 7
+    },
+    "duplicate_pairs": 0,
+    "decode": "passed"
+  }
+]

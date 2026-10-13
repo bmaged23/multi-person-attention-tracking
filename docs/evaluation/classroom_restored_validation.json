@@ -1,0 +1,74 @@
+[
+  {
+    "clip": "class_6",
+    "frames": 300,
+    "fps": 30.0,
+    "width": 1920,
+    "height": 1080,
+    "max_simultaneous_person_boxes": 40,
+    "track_ids": 145,
+    "observations": 10204,
+    "labels": {
+      "no_face": 4595,
+      "attentive": 4959,
+      "drowsy": 611,
+      "partial": 39
+    },
+    "iou_threshold": 0.5,
+    "attention_thresholds": {
+      "yaw": 39.4,
+      "pitch_down": -24.6,
+      "pitch_up": 41.6,
+      "ear": 0.092,
+      "iris_side": 0.37,
+      "attentive": 0.5,
+      "partial": 0.25
+    },
+    "attention_algorithm": "original_weighted",
+    "person_tiles": 2,
+    "person_confidence": 0.15,
+    "device": "cpu",
+    "decode": "passed",
+    "attention_accuracy_measured": false,
+    "identity_note": "Track IDs can fragment and person boxes can duplicate; neither count is a count of unique people.",
+    "annotation": "face_mesh_bounds_only",
+    "max_simultaneous_annotated_faces": 26,
+    "original_label_counts_unchanged_after_annotation_update": true
+  },
+  {
+    "clip": "class_7",
+    "frames": 300,
+    "fps": 30.0,
+    "width": 1920,
+    "height": 1080,
+    "max_simultaneous_person_boxes": 43,
+    "track_ids": 136,
+    "observations": 10952,
+    "labels": {
+      "attentive": 4646,
+      "no_face": 5368,
+      "drowsy": 923,
+      "partial": 15
+    },
+    "iou_threshold": 0.5,
+    "attention_thresholds": {
+      "yaw": 39.4,
+      "pitch_down": -24.6,
+      "pitch_up": 41.6,
+      "ear": 0.092,
+      "iris_side": 0.37,
+      "attentive": 0.5,
+      "partial": 0.25
+    },
+    "attention_algorithm": "original_weighted",
+    "person_tiles": 2,
+    "person_confidence": 0.15,
+    "device": "cpu",
+    "decode": "passed",
+    "attention_accuracy_measured": false,
+    "identity_note": "Track IDs can fragment and person boxes can duplicate; neither count is a count of unique people.",
+    "annotation": "face_mesh_bounds_only",
+    "max_simultaneous_annotated_faces": 23,
+    "original_label_counts_unchanged_after_annotation_update": true
+  }
+]

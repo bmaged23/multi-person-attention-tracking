@@ -1,0 +1,38 @@
+# Private configuration and local working notes
+.env
+.env.*
+!.env.example
+/description/
+
+# Environments, downloaded models, and test data
+/.venv/
+/.python/
+/.cache/
+/.ruff_cache/
+/models/
+/input/
+/output/
+*.task
+*.tflite
+*.onnx
+*.download
+
+# Only reviewed, redistributable README assets belong in docs/media.
+/docs/media/*demo*
+
+# Python build artifacts and caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+
+# Editor, operating-system, and runtime files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="960" viewBox="0 0 1440 960" role="img" aria-labelledby="title desc">
+<title id="title">Multi-person attention tracking pipeline</title>
+<desc id="desc">Video or camera frames feed person detection, head cropping and MediaPipe. Person boxes drive IoU tracking. Facial signals drive the weighted attention rule. Track IDs and results produce JSON and face-only annotations. Missing faces retain a tracked no_face record.</desc>
+<rect width="100%" height="100%" fill="#0b1220"/>
+<polyline points="290,185 365,185" fill="none" stroke="#88baff" stroke-width="3"/>
+<polygon points="365.0,185.0 354.5,190.8 354.5,179.2" fill="#88baff"/>
+<polyline points="645,185 725,185" fill="none" stroke="#88baff" stroke-width="3"/>
+<polygon points="725.0,185.0 714.5,190.8 714.5,179.2" fill="#88baff"/>
+<polyline points="1005,185 1080,185" fill="none" stroke="#88baff" stroke-width="3"/>
+<polygon points="1080.0,185.0 1069.5,190.8 1069.5,179.2" fill="#88baff"/>
+<polyline points="505,230 505,380" fill="none" stroke="#67dec0" stroke-width="3"/>
+<polygon points="505.0,380.0 499.2,369.5 510.8,369.5" fill="#67dec0"/>
+<polyline points="1240,230 1240,380" fill="none" stroke="#67dec0" stroke-width="3"/>
+<polygon points="1240.0,380.0 1234.2,369.5 1245.8,369.5" fill="#67dec0"/>
+<polyline points="1240,470 1240,610" fill="none" stroke="#ffc77a" stroke-width="3"/>
+<polygon points="1240.0,610.0 1234.2,599.5 1245.8,599.5" fill="#ffc77a"/>
+<polyline points="505,470 505,610" fill="none" stroke="#67dec0" stroke-width="3"/>
+<polygon points="505.0,610.0 499.2,599.5 510.8,599.5" fill="#67dec0"/>
+<polyline points="1080,655 645,655" fill="none" stroke="#ffc77a" stroke-width="3"/>
+<polygon points="645.0,655.0 655.5,649.2 655.5,660.8" fill="#ffc77a"/>
+<polyline points="505,700 505,755 240,755 240,810" fill="none" stroke="#67dec0" stroke-width="3"/>
+<polygon points="240.0,810.0 234.2,799.5 245.8,799.5" fill="#67dec0"/>
+<polyline points="505,755 1095,755 1095,810" fill="none" stroke="#88baff" stroke-width="3"/>
+<polygon points="1095.0,810.0 1089.2,799.5 1100.8,799.5" fill="#88baff"/>
+<polyline points="1400,185 1420,185 1420,540 505,540 505,610" fill="none" stroke="#a7b7cc" stroke-width="3"/>
+<polygon points="505.0,610.0 499.2,599.5 510.8,599.5" fill="#a7b7cc"/>
+<rect x="40" y="140" width="250" height="90" rx="14" fill="#172238" stroke="#88baff" stroke-width="2"/>
+<text x="165.0" y="175" text-anchor="middle" fill="#e8eef8" font-family="DejaVu Sans, sans-serif" font-size="21">Video / live camera</text>
+<text x="165.0" y="204" text-anchor="middle" fill="#a7b7cc" font-family="DejaVu Sans, sans-serif" font-size="17">Decode every frame</text>
+<rect x="365" y="140" width="280" height="90" rx="14" fill="#172238" stroke="#88baff" stroke-width="2"/>
+<text x="505.0" y="175" text-anchor="middle" fill="#e8eef8" font-family="DejaVu Sans, sans-serif" font-size="21">YOLOv8n · OpenCV</text>
+<text x="505.0" y="204" text-anchor="middle" fill="#a7b7cc" font-family="DejaVu Sans, sans-serif" font-size="17">Person boxes · CPU</text>
+<rect x="725" y="140" width="280" height="90" rx="14" fill="#172238" stroke="#88baff" stroke-width="2"/>
+<text x="865.0" y="175" text-anchor="middle" fill="#e8eef8" font-family="DejaVu Sans, sans-serif" font-size="21">Head crop + retries</text>
+<text x="865.0" y="204" text-anchor="middle" fill="#a7b7cc" font-family="DejaVu Sans, sans-serif" font-size="17">Upper 40% · padded crop</text>
+<rect x="1080" y="140" width="320" height="90" rx="14" fill="#172238" stroke="#88baff" stroke-width="2"/>
+<text x="1240.0" y="175" text-anchor="middle" fill="#e8eef8" font-family="DejaVu Sans, sans-serif" font-size="21">MediaPipe Face Landmarker</text>
+<text x="1240.0" y="204" text-anchor="middle" fill="#a7b7cc" font-family="DejaVu Sans, sans-serif" font-size="17">Current facial landmarks · CPU</text>
+<rect x="365" y="380" width="280" height="90" rx="14" fill="#172238" stroke="#67dec0" stroke-width="2"/>
+<text x="505.0" y="415" text-anchor="middle" fill="#e8eef8" font-family="DejaVu Sans, sans-serif" font-size="21">IoU association</text>
+<text x="505.0" y="444" text-anchor="middle" fill="#a7b7cc" font-family="DejaVu Sans, sans-serif" font-size="17">One-to-one IDs · IoU &gt;= 0.5</text>
+<rect x="1080" y="380" width="320" height="90" rx="14" fill="#172238" stroke="#67dec0" stroke-width="2"/>
+<text x="1240.0" y="415" text-anchor="middle" fill="#e8eef8" font-family="DejaVu Sans, sans-serif" font-size="21">Head pose + eye signals</text>
+<text x="1240.0" y="444" text-anchor="middle" fill="#a7b7cc" font-family="DejaVu Sans, sans-serif" font-size="17">solvePnP · EAR · iris ratio</text>
+<rect x="1080" y="610" width="320" height="90" rx="14" fill="#172238" stroke="#ffc77a" stroke-width="2"/>
+<text x="1240.0" y="645" text-anchor="middle" fill="#e8eef8" font-family="DejaVu Sans, sans-serif" font-size="21">Weighted attention rule</text>
+<text x="1240.0" y="674" text-anchor="middle" fill="#a7b7cc" font-family="DejaVu Sans, sans-serif" font-size="17">Current-frame score + label</text>
+<rect x="365" y="610" width="280" height="90" rx="14" fill="#172238" stroke="#ffc77a" stroke-width="2"/>
+<text x="505.0" y="645" text-anchor="middle" fill="#e8eef8" font-family="DejaVu Sans, sans-serif" font-size="21">Tracked observation</text>
+<text x="505.0" y="674" text-anchor="middle" fill="#a7b7cc" font-family="DejaVu Sans, sans-serif" font-size="17">ID + face bounds + result</text>
+<rect x="40" y="810" width="400" height="90" rx="14" fill="#172238" stroke="#67dec0" stroke-width="2"/>
+<text x="240.0" y="845" text-anchor="middle" fill="#e8eef8" font-family="DejaVu Sans, sans-serif" font-size="21">JSON summary + JSONL</text>
+<text x="240.0" y="874" text-anchor="middle" fill="#a7b7cc" font-family="DejaVu Sans, sans-serif" font-size="17">Person box retained even without face</text>
+<rect x="790" y="810" width="610" height="90" rx="14" fill="#172238" stroke="#88baff" stroke-width="2"/>
+<text x="1095.0" y="845" text-anchor="middle" fill="#e8eef8" font-family="DejaVu Sans, sans-serif" font-size="21">Annotated H.264 video / preview</text>
+<text x="1095.0" y="874" text-anchor="middle" fill="#a7b7cc" font-family="DejaVu Sans, sans-serif" font-size="17">Face-only boxes · name + attention label</text>
+<text x="40" y="69" fill="#e8eef8" font-family="DejaVu Sans, sans-serif" font-size="34">MULTI-PERSON ATTENTION TRACKING</text>
+<text x="40" y="108" fill="#a7b7cc" font-family="DejaVu Sans, sans-serif" font-size="22">Shared pipeline for video files and camera streams · dummy session-local names</text>
+<text x="525" y="309" fill="#67dec0" font-family="DejaVu Sans, sans-serif" font-size="19">Current person boxes</text>
+<text x="930" y="524" fill="#a7b7cc" font-family="DejaVu Sans, sans-serif" font-size="19">No face: score 0 · no_face · not drawn</text>
+<text x="720" y="639" fill="#ffc77a" font-family="DejaVu Sans, sans-serif" font-size="19">Fresh measurements</text>
+<text x="40" y="945" fill="#a7b7cc" font-family="DejaVu Sans, sans-serif" font-size="18">Spatial tracking is not identity recognition. Visual attention scores are heuristics, not probabilities.</text>
+</svg>

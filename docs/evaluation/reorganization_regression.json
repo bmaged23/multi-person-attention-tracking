@@ -1,0 +1,36 @@
+[
+  {
+    "clip": "class_6",
+    "frames": 30,
+    "compared_observations": 1023,
+    "all_record_fields_exactly_equal": true,
+    "fields": [
+      "id",
+      "name",
+      "time",
+      "bbox",
+      "face_bbox",
+      "label",
+      "is_attentive",
+      "score",
+      "signals"
+    ]
+  },
+  {
+    "clip": "class_7",
+    "frames": 30,
+    "compared_observations": 1164,
+    "all_record_fields_exactly_equal": true,
+    "fields": [
+      "id",
+      "name",
+      "time",
+      "bbox",
+      "face_bbox",
+      "label",
+      "is_attentive",
+      "score",
+      "signals"
+    ]
+  }
+]
