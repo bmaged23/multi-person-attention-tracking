@@ -33,12 +33,15 @@ Use your own or suitably licensed videos for a public portfolio demonstration.
 
 ## Redistributable public demo
 
-RWEAD 1.0: https://sites.google.com/view/rwead/rwead-1-0
-Official repository: https://osf.io/453sh/
-The dataset and OSF metadata specify CC BY 4.0. The README uses annotated
-camera1_audience excerpts from Set2, film 8 and film 51. Source credit and
-modification details are in DEMO_SOURCE.md; the official license text is under
-licenses/RWEAD_CC_BY_4.0.txt. Provenance and checksums are in rwead_provenance.json.
+AIRC-SMARTCLASS Part 2, version 1:
+https://data.mendeley.com/datasets/fw5hs57z78/1
+Contributors: Van Anh Nguyen Thi, Tu Chu Pham Dinh, Son Le Hoang (2026).
+The dataset's own page and metadata specify CC BY 4.0. The README uses annotated
+excerpts from recording 018.avi, showing more than ten students in one camera
+view. Source credit and modification details: DEMO_SOURCE.md. License text:
+licenses/CC_BY_4.0.txt. Provenance and original source checksum:
+airc_provenance.json.
 
-The earlier AMI Meeting Corpus samples remain local under their CC BY 4.0
-license. Their original source is https://groups.inf.ed.ac.uk/ami/download/.
+Older RWEAD 1.0 and AMI samples remain local under their CC BY 4.0 terms. Their
+metadata and historical validation reports are retained separately. CDED-7
+restricted classroom footage is not used in public media.

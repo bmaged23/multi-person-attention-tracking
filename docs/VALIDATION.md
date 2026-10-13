@@ -76,18 +76,23 @@ but reported llvmpipe software rendering. That did not replace the original
 CPU path or establish NVIDIA hardware acceleration. Physical-camera/RTSP and
 hardware GPU capture/inference remain unverified here.
 
-## Public single-camera RWEAD demo
+## Public classroom demo with more than ten participants
 
-Two eight-second, native 1920×1080, 20 FPS excerpts from RWEAD 1.0 Set2,
-camera1_audience, show five people together in one physical camera view.
-Film 8 annotated all five faces in all 160 frames. Film 51 contains motion and
-occlusion; most frames have five face observations, with occasional misses or
-duplicates. These counts are not ground-truth recall or attention accuracy.
+AIRC-SMARTCLASS Part 2 recording 018.avi contains substantially more than ten
+students together in one camera view. Two excerpts, 30–38 and 90–98 seconds,
+were processed at native 1920×1080 and 24.75 FPS. Each has 198 frames; all frames
+were analyzed. Existing person tiling is set to 4 for this crowded view; attention
+and tracking thresholds are unchanged. Small faces and monitor occlusion limit
+landmark availability. Detection and track counts are not participant counts.
 
-The combined MP4 has 320 frames and lasts 16 seconds. The native-resolution GIF
-has 96 frames at 6 FPS and infinite looping. Full MP4 decoding, dimensions,
-frame counts, GIF loop metadata and file-size limits are verified.
-Source license and modifications are in DEMO_SOURCE.md; measurements are in
-evaluation/public_demo_validation.json. Earlier AMI metrics are historical and
-recorded in evaluation/historical/ami_demo_validation.json. The scoring and
-inference configuration have not changed for the replacement footage.
+The preparation utility downloads the original recording and verifies the
+publisher's SHA-256. Reproduction from the local verified source yielded
+identical decoded pixels to the initially downloaded excerpts. The combined
+MP4 has 396 frames and lasts 16 seconds. The native-resolution looping GIF uses
+5 FPS. Full decoding, dimensions, frame counts, infinite-loop metadata and asset
+sizes are checked before publication.
+
+Source credit and license: DEMO_SOURCE.md. Current observations:
+evaluation/public_demo_validation.json. Earlier AMI and RWEAD demo measurements
+are separate historical reports. This is a qualitative demonstration; no
+complete person recall or ground-truth attention accuracy is claimed.

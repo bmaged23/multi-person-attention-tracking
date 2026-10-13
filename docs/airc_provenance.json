@@ -1,0 +1,28 @@
+{
+  "dataset": "AIRC-SMARTCLASS Part 2",
+  "version": 1,
+  "source": "https://data.mendeley.com/datasets/fw5hs57z78/1",
+  "doi": "10.17632/fw5hs57z78.1",
+  "license": "CC BY 4.0",
+  "authors": [
+    "Van Anh Nguyen Thi",
+    "Tu Chu Pham Dinh",
+    "Son Le Hoang"
+  ],
+  "original_filename": "018.avi",
+  "url": "https://data.mendeley.com/public-files/datasets/fw5hs57z78/files/5102593b-0169-49fe-81d7-89c34c3185be/file_downloaded",
+  "sha256": "812fa959d022791919e84451f9ca0826957b955058abca3da7e23cef9fe5cfdc",
+  "size_bytes": 255341188,
+  "excerpts": [
+    {
+      "filename": "classroom018.mp4",
+      "start_seconds": 30,
+      "duration_seconds": 8
+    },
+    {
+      "filename": "classroom018_second.mp4",
+      "start_seconds": 90,
+      "duration_seconds": 8
+    }
+  ]
+}

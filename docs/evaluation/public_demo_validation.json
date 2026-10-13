@@ -1,52 +1,92 @@
 [
   {
-    "dataset": "RWEAD 1.0",
-    "set": 2,
-    "camera": "camera1_audience",
-    "film": 8,
-    "visually_present_participants": 5,
-    "frames": 160,
-    "fps": 20,
+    "dataset": "AIRC-SMARTCLASS Part 2",
+    "recording": "018.avi",
+    "source_start_seconds": 30,
+    "duration_seconds": 8,
+    "single_camera_view": true,
+    "visually_verified_more_than_ten_participants": true,
+    "physical_participant_count_measured": false,
+    "frames": 198,
+    "fps": 24.75,
     "width": 1920,
     "height": 1080,
-    "duration_seconds": 8,
+    "person_tiles": 4,
+    "iou_threshold": 0.5,
+    "attention_thresholds": {
+      "yaw": 39.4,
+      "pitch_down": -24.6,
+      "pitch_up": 41.6,
+      "ear": 0.092,
+      "iris_side": 0.37,
+      "attentive": 0.5,
+      "partial": 0.25
+    },
     "annotated_face_counts_per_frame": {
-      "5": 160
+      "9": 31,
+      "11": 45,
+      "8": 6,
+      "10": 46,
+      "13": 20,
+      "12": 47,
+      "7": 1,
+      "14": 2
     },
+    "max_face_observations": 14,
     "labels": {
-      "attentive": 796,
-      "drowsy": 4
+      "attentive": 1656,
+      "no_face": 1466,
+      "drowsy": 481,
+      "partial": 4
     },
-    "identity_note": "Detection counts can include duplicates; track IDs are session-local and are not person identities.",
+    "identity_note": "Detection counts may include duplicates; track IDs may fragment. Neither is a count of unique participants.",
     "attention_accuracy_measured": false,
-    "algorithm_settings_unchanged": true,
     "license": "CC BY 4.0"
   },
   {
-    "dataset": "RWEAD 1.0",
-    "set": 2,
-    "camera": "camera1_audience",
-    "film": 51,
-    "visually_present_participants": 5,
-    "frames": 160,
-    "fps": 20,
+    "dataset": "AIRC-SMARTCLASS Part 2",
+    "recording": "018.avi",
+    "source_start_seconds": 90,
+    "duration_seconds": 8,
+    "single_camera_view": true,
+    "visually_verified_more_than_ten_participants": true,
+    "physical_participant_count_measured": false,
+    "frames": 198,
+    "fps": 24.75,
     "width": 1920,
     "height": 1080,
-    "duration_seconds": 8,
-    "annotated_face_counts_per_frame": {
-      "4": 21,
-      "5": 136,
-      "6": 3
+    "person_tiles": 4,
+    "iou_threshold": 0.5,
+    "attention_thresholds": {
+      "yaw": 39.4,
+      "pitch_down": -24.6,
+      "pitch_up": 41.6,
+      "ear": 0.092,
+      "iris_side": 0.37,
+      "attentive": 0.5,
+      "partial": 0.25
     },
+    "annotated_face_counts_per_frame": {
+      "7": 12,
+      "8": 27,
+      "9": 39,
+      "12": 23,
+      "10": 55,
+      "11": 32,
+      "14": 2,
+      "13": 6,
+      "6": 1,
+      "5": 1
+    },
+    "max_face_observations": 14,
     "labels": {
-      "attentive": 538,
-      "drowsy": 239,
-      "no_face": 204,
+      "drowsy": 484,
+      "attentive": 1457,
+      "no_face": 1313,
       "partial": 5
     },
-    "identity_note": "Detection counts can include duplicates; track IDs are session-local and are not person identities.",
+    "identity_note": "Detection counts may include duplicates; track IDs may fragment. Neither is a count of unique participants.",
     "attention_accuracy_measured": false,
-    "algorithm_settings_unchanged": true,
     "license": "CC BY 4.0"
   }
 ]

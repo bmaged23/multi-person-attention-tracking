@@ -14,14 +14,14 @@ Names such as Person 1 are spatial labels; no face recognition or enrollment is 
 
 ## Demo
 
-![Looping single-camera classroom audience attention demo](docs/media/attention-demo.gif)
+![Looping attention demo with more than ten students in one classroom view](docs/media/attention-demo.gif)
 
-**Five people together in one camera view**, across two amphitheatre seating
-arrangements. Face-only boxes, session-local names and attention labels;
-the combined preview repeats continuously.
+**More than 10 students together in one classroom camera view.** Two excerpts
+from a real computer-lab class show face-only boxes, session-local names and
+heuristic attention labels; the combined preview repeats continuously.
 
-Source: **RWEAD 1.0**, Lemos, Cardoso, Rodrigues and collaborators, **CC BY 4.0**.
-Excerpts are trimmed, annotated and combined; labels are our heuristic results.
+Source: **AIRC-SMARTCLASS Part 2**, Nguyen Thi, Chu Pham Dinh and Le Hoang,
+**CC BY 4.0**. Excerpts are trimmed, annotated and combined.
 [Attribution and modifications](docs/DEMO_SOURCE.md) · [Full-resolution MP4](docs/media/attention-demo.mp4)
 
 ## Pipeline
@@ -207,31 +207,35 @@ and are never used as the visible annotation rectangle.
 
 ## Reproduce the public demo
 
-The public demo uses **RWEAD 1.0**, a CC BY 4.0 amphitheatre attention dataset.
-Both excerpts show five people together from **camera1_audience**, with
-[source attribution and modification details](docs/DEMO_SOURCE.md). The earlier
-research-only classroom footage stays local and is not part of the README demo.
+The public demo uses **AIRC-SMARTCLASS Part 2**, released under CC BY 4.0.
+Both excerpts show more than ten students in a single computer-lab camera view,
+with [source attribution and modification details](docs/DEMO_SOURCE.md).
+The earlier restricted classroom footage stays local.
 
 ```bash
 python scripts/datasets/prepare_public_demo.py
-python video_attention.py --video input/rwead/Set2_camera1_film8.mp4 \
-  --max-seconds 8 --output output/rwead/film8.json \
-  --annotated-video output/rwead/film8_annotated.mp4
-python video_attention.py --video input/rwead/Set2_camera1_film51.mp4 \
-  --max-seconds 8 --output output/rwead/film51.json \
-  --annotated-video output/rwead/film51_annotated.mp4
+python video_attention.py --video input/airc/classroom018.mp4 \
+  --person-tiles 4 --output output/airc/classroom018.json \
+  --annotated-video output/airc/classroom018_annotated.mp4
+python video_attention.py --video input/airc/classroom018_second.mp4 \
+  --person-tiles 4 --output output/airc/classroom018_second.json \
+  --annotated-video output/airc/classroom018_second_annotated.mp4
 python scripts/build_video_demo.py \
-  --videos output/rwead/film8_annotated.mp4 output/rwead/film51_annotated.mp4 \
-  --output-dir docs/media --preview-width 1920 --preview-fps 6
+  --videos output/airc/classroom018_annotated.mp4 output/airc/classroom018_second_annotated.mp4 \
+  --output-dir docs/media --preview-width 1920 --preview-fps 5
 ```
 
-The combined MP4 retains **1920×1080 at 20 FPS**. The looping GIF retains the
-same resolution at 6 FPS. IDs restart for the second recording; people are not
-identified across clips. The GIF loops where animation playback is enabled.
-The generator also creates a local autoplay/muted/loop HTML player.
+The source download is approximately 255 MB and its SHA-256 is verified.
+The combined MP4 retains **1920×1080 at 24.75 FPS**; the looping GIF retains
+that resolution at 5 FPS. Four-way person tiling improves detection for this
+crowded view; the scoring thresholds remain unchanged. Monitors, small faces
+and occlusion still cause missed measurements. The footage's participant count
+is separate from the detector's observation count.
 
-For your own recordings, supply `--videos first.mp4 second.mp4` and an output
-folder such as `output/demo`. Keep the attribution with any RWEAD-derived media.
+IDs restart for the second excerpt; people are not recognized across clips.
+The GIF loops where animation playback is enabled. The generator also creates
+a local autoplay/muted/loop HTML player. For your own recordings, supply
+`--videos first.mp4 second.mp4` and an output folder such as `output/demo`.
 
 ## Structure
 

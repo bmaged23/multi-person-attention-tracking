@@ -1,43 +1,46 @@
-# Public demo source and attribution
+# Public classroom demo source and attribution
 
-**Source:** Real World Engagement Attention Dataset (RWEAD 1.0), Marco Lemos,
-Pedro J. S. Cardoso, João M. F. Rodrigues and collaborators.
+**Source:** AIRC-SMARTCLASS: A Multi-Modal Classroom Dataset for Automatically
+Controlling Devices in Smart Classroom Part 2, version 1.
 
-- Official page: https://sites.google.com/view/rwead/rwead-1-0
-- Dataset: https://osf.io/453sh/
-- DOI: https://doi.org/10.17605/OSF.IO/453SH
+**Contributors:** Van Anh Nguyen Thi, Tu Chu Pham Dinh, Son Le Hoang (2026).
+
+- Dataset: https://data.mendeley.com/datasets/fw5hs57z78/1
+- DOI: https://doi.org/10.17632/fw5hs57z78.1
 - License: Creative Commons Attribution 4.0 International (CC BY 4.0).
   https://creativecommons.org/licenses/by/4.0/
-- Official OSF license text: licenses/RWEAD_CC_BY_4.0.txt.
-- Exact file paths, download URLs and SHA-256: rwead_provenance.json.
+- License text: licenses/CC_BY_4.0.txt.
+- Source file, download URL and publisher's SHA-256: airc_provenance.json.
 
 ## Exact footage
 
-Engagement Amphitheatre / Set2 / camera1_audience, **film_8.mp4** and
-**film_51.mp4**. Each scene shows five participants together in the same physical
-camera view. The public demo uses the first eight seconds of each recording,
-retaining native 1920×1080 resolution at 20 FPS. The first arrangement is followed
-by the second; the preview then repeats. IDs restart for the second recording
-and are session-local spatial labels, not matched identities across clips.
+Original recording **018.avi**, from a single wall-mounted camera in the
+Computer Laboratory, University of Transport Technology, Hanoi, Vietnam.
+The demo contains excerpts from **30–38 seconds** and **90–98 seconds** of the
+same recording. Both show substantially more than ten students in one physical
+camera view; people and camera views are not composited.
 
-RWEAD uses instructed/simulated engagement behaviours. Our displayed labels
-are the application's current head/eye heuristic outputs, not source ground-truth
-labels and not a claim about the participants' actual cognitive attention.
+Each excerpt retains native 1920×1080 resolution at 24.75 FPS and is processed
+on every decoded frame. The combined MP4 lasts 16 seconds. The GIF retains the
+same resolution at 5 FPS and loops indefinitely. Names/IDs restart for the second
+excerpt and are session-local spatial labels, not recognized identities.
 
-## Modifications
+## Modifications and inference settings
 
-Trimmed each recording to eight seconds, removed audio, re-encoded as H.264,
-added face boxes and heuristic attention labels, combined the annotated clips,
-and generated a native-resolution looping GIF at a reduced frame rate (6 FPS).
-The combined MP4 remains 20 FPS. No faces, people or camera views were composited
-into either scene. The dataset authors do not endorse these predictions.
+Trimmed to eight seconds per excerpt, removed audio, re-encoded as H.264, added
+face boxes and heuristic attention labels, combined both excerpts, and generated
+a reduced-frame-rate looping GIF.
 
-Source recordings are excluded from Git; only the credited derivative demo is
-committed. Older AMI samples and restricted CDED-7 footage remain local.
+The existing --person-tiles 4 option is used for this crowded, occluded view;
+other default model, tracking and attention-score settings are unchanged.
+Monitors hide bodies/faces and distant heads are small, so not every visible
+student receives a valid face measurement on every frame. Detection counts
+and fragmented track IDs must not be reported as participant counts.
 
-## Requested dataset citation
+Displayed labels are this application's heuristic predictions, not source
+attention ground truth, verified cognitive attention, or a clinical assessment.
+The dataset contributors do not endorse this application or its predictions.
 
-Lemos, Marco, Cardoso, Pedro J. S., & Rodrigues, João M. F. (2026).
-MiE: A Microscopic Model for Real-Time Group Engagement Estimation Using Gaze
-and Posture. Journal of Computational Science, 96.
-https://doi.org/10.1016/j.jocs.2026.102856
+Source recordings remain local and excluded from Git. The credited derivative
+MP4 and GIF are publicly included under CC BY 4.0. Earlier AMI, RWEAD and
+research-restricted CDED-7 samples remain local; they are not the current demo.
