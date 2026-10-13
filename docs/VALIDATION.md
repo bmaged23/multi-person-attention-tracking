@@ -75,3 +75,15 @@ an optional GPU mode. A local diagnostic initialized EGL outside the sandbox
 but reported llvmpipe software rendering. That did not replace the original
 CPU path or establish NVIDIA hardware acceleration. Physical-camera/RTSP and
 hardware GPU capture/inference remain unverified here.
+
+## Public AMI demo
+
+Two 12-second native 720×576, 25 FPS excerpts from AMI meeting IS1004d
+were processed with the unchanged default settings. Their annotated output
+is combined into a 600-frame, 24-second H.264 MP4 and an infinitely looping
+192-frame, 8 FPS GIF. Full combined-video decoding, dimensions, frame counts,
+GIF loop metadata and repository asset sizes are verified.
+
+Source credit and CC BY 4.0 modification details are in DEMO_SOURCE.md;
+measurements are in evaluation/public_demo_validation.json. These clips are
+qualitative demonstrations, not a ground-truth attention-accuracy benchmark.

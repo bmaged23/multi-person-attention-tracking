@@ -19,6 +19,9 @@
 
 # Only reviewed, redistributable README assets belong in docs/media.
 /docs/media/*demo*
+!/docs/media/attention-demo.mp4
+!/docs/media/attention-demo.gif
+/docs/media/index.html
 
 # Python build artifacts and caches
 __pycache__/

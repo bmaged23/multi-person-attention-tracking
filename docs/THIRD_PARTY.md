@@ -30,3 +30,10 @@ public README media without the maintainers' written permission.
 
 TVHI clips are also research-only copyrighted footage; see TEST_DATA.md.
 Use your own or suitably licensed videos for a public portfolio demonstration.
+
+## Redistributable public demo
+
+AMI Meeting Corpus, AMI Consortium: https://groups.inf.ed.ac.uk/ami/download/
+Video signals are CC BY 4.0. The public README media uses trimmed, annotated
+left/right camera excerpts from IS1004d, with credit and modification details
+in DEMO_SOURCE.md. The official license text is under licenses/AMI_CC_BY_4.0.txt.

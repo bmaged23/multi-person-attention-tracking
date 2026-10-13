@@ -1,0 +1,60 @@
+[
+  {
+    "meeting": "IS1004d",
+    "camera": "L",
+    "source_start_seconds": 60,
+    "duration_seconds": 12,
+    "frames": 300,
+    "width": 720,
+    "height": 576,
+    "fps": 25.0,
+    "labels": {
+      "attentive": 544,
+      "no_face": 1397,
+      "drowsy": 27,
+      "partial": 7
+    },
+    "max_simultaneous_visible_faces": 4,
+    "iou_threshold": 0.5,
+    "attention_thresholds": {
+      "yaw": 39.4,
+      "pitch_down": -24.6,
+      "pitch_up": 41.6,
+      "ear": 0.092,
+      "iris_side": 0.37,
+      "attentive": 0.5,
+      "partial": 0.25
+    },
+    "attention_accuracy_measured": false,
+    "license": "CC BY 4.0"
+  },
+  {
+    "meeting": "IS1004d",
+    "camera": "R",
+    "source_start_seconds": 60,
+    "duration_seconds": 12,
+    "frames": 300,
+    "width": 720,
+    "height": 576,
+    "fps": 25.0,
+    "labels": {
+      "drowsy": 59,
+      "attentive": 474,
+      "no_face": 1142,
+      "partial": 1
+    },
+    "max_simultaneous_visible_faces": 3,
+    "iou_threshold": 0.5,
+    "attention_thresholds": {
+      "yaw": 39.4,
+      "pitch_down": -24.6,
+      "pitch_up": 41.6,
+      "ear": 0.092,
+      "iris_side": 0.37,
+      "attentive": 0.5,
+      "partial": 0.25
+    },
+    "attention_accuracy_measured": false,
+    "license": "CC BY 4.0"
+  }
+]
