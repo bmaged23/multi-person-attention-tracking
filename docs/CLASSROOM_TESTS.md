@@ -1,5 +1,9 @@
 # Seated classroom test footage
 
+> Historical restricted-source experiments. Current release checks use the
+> licensed [AMI fixtures](../evaluation/fixtures/README.md) and
+> [COCO references](evaluation/README.md). These research videos are not bundled.
+
 ## Source
 
 Classroom Distraction Evaluation Dataset (CDED-7):
@@ -18,9 +22,9 @@ annotated outputs are kept locally under ignored input/output directories.
 ## Reproduce with restored attention rules
 
 ```sh
-python scripts/datasets/prepare_classroom_videos.py
-python scripts/download_model.py
-python scripts/download_person_model.py
+python scripts/datasets/research/prepare_classroom_research_videos.py
+python scripts/setup/download_face_landmarker.py
+python scripts/setup/download_person_detector.py
 python video_attention.py --video input/classroom/class_6.mp4 \
   --output output/classroom/class_6.json \
   --annotated-video output/classroom/class_6_annotated.mp4 --iou-threshold 0.5

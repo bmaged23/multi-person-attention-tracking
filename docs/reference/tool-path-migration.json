@@ -1,0 +1,13 @@
+{
+  "scope": "Organization update; use canonical tools below. Existing CLI app entry points and media/report URLs are preserved.",
+  "renamed_tools": {
+    "scripts/download_model.py": "scripts/setup/download_face_landmarker.py",
+    "scripts/download_person_model.py": "scripts/setup/download_person_detector.py",
+    "scripts/build_pipeline_diagram.py": "scripts/documentation/render_pipeline_diagram.py",
+    "scripts/build_video_demo.py": "scripts/documentation/render_video_demo.py",
+    "scripts/datasets/find_test_clips.py": "scripts/datasets/research/inspect_tvhi_clips.py",
+    "scripts/datasets/prepare_test_videos.py": "scripts/datasets/research/prepare_tvhi_videos.py",
+    "scripts/datasets/prepare_classroom_videos.py": "scripts/datasets/research/prepare_classroom_research_videos.py",
+    "scripts/datasets/prepare_rwead_demo.py": "scripts/datasets/research/prepare_rwead_clips.py"
+  }
+}

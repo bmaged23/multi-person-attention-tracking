@@ -1,6 +1,10 @@
-# Validation
+# Historical CPU validation
 
-## Current baseline
+> This guide records the earlier **30-test, 22-package CPU baseline**.
+> For the current environment, GPU/API checks and verified image, read the
+> [evaluation README](evaluation/README.md) and [main setup guide](../README.md).
+
+## Earlier baseline
 
 The original attention calculations and configured defaults are restored.
 The active implementation is protected by 30 regression/integration tests.

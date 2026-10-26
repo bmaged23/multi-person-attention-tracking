@@ -8,8 +8,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /app
 COPY requirements.txt ./
 RUN python -m pip install --no-cache-dir --no-deps -r requirements.txt && python -m pip check
-COPY scripts/download_model.py scripts/download_person_model.py ./scripts/
-RUN python scripts/download_model.py && python scripts/download_person_model.py
+COPY scripts/setup ./scripts/setup
+RUN python scripts/setup/download_face_landmarker.py && python scripts/setup/download_person_detector.py
 COPY attention_tracking ./attention_tracking
 COPY web ./web
 COPY scripts ./scripts

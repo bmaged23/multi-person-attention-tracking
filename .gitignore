@@ -46,3 +46,22 @@ Thumbs.db
 /requirements/.generated/
 /playwright-report/
 /test-results/
+
+# Additional local environments, tooling caches and temporary work
+/.venv-*/
+/venv/
+/.mypy_cache/
+/.hypothesis/
+.coverage.*
+.ipynb_checkpoints/
+/tmp/
+/temp/
+/logs/
+/recordings/
+/uploads/
+/artifacts/
+*.tmp
+*.part
+*.bak
+*.pem
+*.key

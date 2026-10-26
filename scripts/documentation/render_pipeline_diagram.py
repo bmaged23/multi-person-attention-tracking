@@ -5,7 +5,7 @@ import math
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 DEST = ROOT / "docs/media"
 W, H = 1440, 960
 BG, TEXT, MUTED = "#0b1220", "#e8eef8", "#a7b7cc"

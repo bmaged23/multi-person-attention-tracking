@@ -212,8 +212,8 @@ Native Windows and macOS were not qualified by this release.
 Download checksum-pinned models, then start GPU-assisted inference:
 
 ```bash
-python scripts/download_model.py
-python scripts/download_person_model.py
+python scripts/setup/download_face_landmarker.py
+python scripts/setup/download_person_detector.py
 ATTENTION_PERSON_BACKEND=onnx ATTENTION_PERSON_DEVICE=cuda \
   python -m uvicorn attention_tracking.api:app \
   --host 127.0.0.1 --port 8770 --workers 1
@@ -308,18 +308,21 @@ scripts/
   evaluation/                   Detection, synthetic tracking and workflow profiling
   release/                      Exact-image gate, public checks and Hub overview sync
   documentation/                Charts from saved measurement JSON
-  datasets/                     Optional licensed test-source provisioning
-  download*_model.py            Checksum-verified model provisioning
-  build*_*.py                   Existing demo/diagram generators
+  datasets/                     Current COCO/AMI/demo source provisioning
+    research/                   Optional older research-source utilities
+  setup/                        Checksum-verified face/person model provisioning
+  documentation/                Diagram, demo and measured-chart generators
 evaluation/datasets/            Frozen human-box references and synthetic trajectories
 evaluation/fixtures/            Licensed lossless AMI API samples
 evaluation/release_policy.json  Prequalification regression thresholds
 deployment/docker/              Image recipe and Docker guide
 deployment/dockerhub/            Public overview source
-docs/api/, deployment/          Detailed API and CI/CD guides
+docs/api/, docs/deployment/     Detailed API and CI/CD guides
 docs/evaluation/                Methods, charts and measured aggregates
 tests/                          Offline, API, geometry and association regressions
 ```
+
+[Tool index](scripts/README.md) · [Documentation index](docs/README.md) · [Recorded-measurement index](docs/evaluation/measurements/README.md)
 
 Private uploads/results, environments, models, input downloads, raw experimental
 outputs and local `description/` notes are ignored. Historical validations retain

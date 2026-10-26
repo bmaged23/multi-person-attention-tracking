@@ -40,7 +40,9 @@ def decode_predictions(output, scale, padding, offset, shape, confidence):
 class PersonDetector:
     def __init__(self, settings):
         if not Path(settings.person_model_path).is_file():
-            raise FileNotFoundError("Run python scripts/download_person_model.py first")
+            raise FileNotFoundError(
+                "Run python scripts/setup/download_person_detector.py first"
+            )
         self.settings = settings
         self.session = None
         if settings.person_backend == "onnx":

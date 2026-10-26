@@ -28,7 +28,9 @@ class FaceBackend:
         import mediapipe as mp
 
         if not settings.model_path.is_file():
-            raise FileNotFoundError("Run python scripts/download_model.py first")
+            raise FileNotFoundError(
+                "Run python scripts/setup/download_face_landmarker.py first"
+            )
         self.mp = mp
         self.settings = settings
         self.image_mode = image_mode or settings.tile_grid > 1

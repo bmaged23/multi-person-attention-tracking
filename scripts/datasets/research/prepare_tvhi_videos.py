@@ -4,7 +4,7 @@ import tarfile
 import urllib.request
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 BASE = "https://www.robots.ox.ac.uk/~alonso/data/"
 
 if __name__ == "__main__":

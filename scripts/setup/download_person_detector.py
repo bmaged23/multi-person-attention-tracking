@@ -1,27 +1,27 @@
-"""Download the versioned official Google MediaPipe Face Landmarker bundle."""
+"""Download the revision-pinned YOLOv8n ONNX export for person-only detection."""
 
 import hashlib
 import urllib.request
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-URL = "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task"
+ROOT = Path(__file__).resolve().parents[2]
+URL = "https://huggingface.co/webml/yolov8n/resolve/85bc8d7ab30d4065a41909d756c42819b67b4388/onnx/yolov8n.onnx"
 
-EXPECTED_SHA256 = "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff"
+EXPECTED_SHA256 = "190ba5f1e61411a001683e349d6b2cdb0804c0dc67a5e34cd8ff6fd00ee54b4d"
 
 if __name__ == "__main__":
-    destination = ROOT / "models/face_landmarker.task"
-    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination = ROOT / "models/yolov8n.onnx"
     if not destination.exists():
+        destination.parent.mkdir(parents=True, exist_ok=True)
         temporary = destination.with_suffix(".download")
         try:
             urllib.request.urlretrieve(URL, temporary)
             if hashlib.sha256(temporary.read_bytes()).hexdigest() != EXPECTED_SHA256:
-                raise RuntimeError("Downloaded model checksum mismatch")
+                raise RuntimeError("Person model checksum mismatch")
             temporary.replace(destination)
         finally:
             temporary.unlink(missing_ok=True)
     if hashlib.sha256(destination.read_bytes()).hexdigest() != EXPECTED_SHA256:
-        raise RuntimeError("Model checksum mismatch")
+        raise RuntimeError("Person model checksum mismatch")
     print(destination)
     print("SHA-256:", hashlib.sha256(destination.read_bytes()).hexdigest())

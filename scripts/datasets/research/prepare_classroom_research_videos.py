@@ -6,7 +6,7 @@ import urllib.request
 import zipfile
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 API = "https://zenodo.org/api/records/21207208"
 
 if __name__ == "__main__":

@@ -1,5 +1,8 @@
 # Test data provenance
 
+> Historical research-source notes. Current release datasets and scoring are
+> documented in the [evaluation README](evaluation/README.md).
+
 Source: TV Human Interaction Dataset, Oxford Visual Geometry Group.
 https://www.robots.ox.ac.uk/~alonso/tv_human_interactions.html
 
