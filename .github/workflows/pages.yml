@@ -1,0 +1,43 @@
+name: Demo site deployment
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/site/**'
+      - 'docs/media/attention-demo.mp4'
+      - 'docs/media/annotated-demo-poster.jpg'
+      - 'docs/media/pipeline.svg'
+      - 'scripts/documentation/prepare_demo_site.py'
+      - '.github/workflows/pages.yml'
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
+        with:
+          python-version: '3.12.15'
+      - uses: actions/configure-pages@v6.0.0
+      - name: Stage annotated video demo and public assets
+        run: python -m scripts.documentation.prepare_demo_site
+      - uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy annotated demo
+        id: deployment
+        uses: actions/deploy-pages@v5.0.1

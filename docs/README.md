@@ -4,6 +4,7 @@
 | --- | --- |
 | [Main README](../README.md) | Overview, demos, measured results and source setup |
 | [Architecture](ARCHITECTURE.md) | Current detection, landmarks, association, scoring and outputs |
+| [Hosted video demo](site/README.md) | Annotated MP4 player, static Pages deployment and local preview |
 | [API](api/README.md) | Upload jobs, formats, endpoints, limits and result lifecycle |
 | [Docker](../deployment/docker/README.md) | Complete image, GPU/CPU pull/run, sample and updates |
 | [CI/CD](deployment/README.md) | Hosted build, GPU quality gates and public verification |

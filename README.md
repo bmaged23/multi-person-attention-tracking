@@ -17,7 +17,9 @@ small development benchmarks, not a real-time throughput or attention-accuracy g
 
 ## Demo and interface
 
-![Classroom attention preview](docs/media/attention-demo.gif)
+[![Play the annotated classroom demo](docs/media/annotated-demo-poster.jpg)](https://bmaged23.github.io/multi-person-attention-tracking/)
+
+**[Play the annotated video demo](https://bmaged23.github.io/multi-person-attention-tracking/)** · [Original looping GIF](docs/media/attention-demo.gif)
 
 The existing classroom demo shows more than ten students in one view. Source:
 **AIRC-SMARTCLASS Part 2**, CC BY 4.0; excerpts were trimmed, annotated and combined.
@@ -30,6 +32,11 @@ The new interface uploads a clip, plays the annotated output and links all repor
 This screenshot uses the licensed AMI fixture with a two-second test cap;
 [fixture attribution](evaluation/fixtures/README.md). The service's default maximum
 source duration is 10 seconds, configurable in `ServiceSettings`.
+
+The demo site is hosted with **GitHub Pages**. Its deployments appear under the
+repository’s **Deployments → github-pages** section. It plays recorded annotated
+output and links the guides; run the Python/GPU application locally to analyze
+your own videos. [Demo site deployment guide](docs/site/README.md).
 
 ## Pipeline — inputs and outputs
 

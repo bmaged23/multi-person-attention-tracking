@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Watch the annotated multi-person visual attention demo, explore the pipeline and run the local GPU application.">
+  <title>Multi-Person Visual Attention · Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="player.js" defer></script>
+</head>
+<body>
+  <main>
+    <nav><a class="brand" href="./">BOLA MAGED <span>/ COMPUTER VISION</span></a><a href="https://github.com/bmaged23/multi-person-attention-tracking">GitHub ↗</a></nav>
+    <header>
+      <p class="eyebrow">ANNOTATED VIDEO DEMO</p>
+      <h1>See the signals.<br><span>Follow the people.</span></h1>
+      <p class="intro">Person detection, face landmarks and spatial tracking, brought together in a local visual attention pipeline.</p>
+    </header>
+    <section aria-labelledby="demo-title">
+      <div class="section-heading"><h2 id="demo-title">Multi-person classroom demo</h2><span>16 SECONDS · 1080p · NO AUDIO</span></div>
+      <div class="screen">
+        <video id="demo" controls playsinline preload="metadata" poster="assets/annotated-demo-poster.jpg" aria-label="Annotated classroom video with face boxes and heuristic attention labels">
+          <source src="assets/attention-demo.mp4" type="video/mp4">
+          Your browser cannot play this video. <a href="assets/attention-demo.mp4">Download the annotated MP4</a>.
+        </video>
+        <button id="play" aria-label="Play annotated demo"><span aria-hidden="true">▶</span> Play annotated demo</button>
+      </div>
+      <p class="caption">The existing classroom demo uses the original CPU settings with four-way person tiling. Labels are visual heuristics; track IDs restart between excerpts. This recording is separate from the GPU performance benchmark below.</p>
+      <p class="credit">Footage: <a href="https://doi.org/10.17632/fw5hs57z78.1">AIRC-SMARTCLASS Part 2</a>, Van Anh Nguyen Thi, Tu Chu Pham Dinh and Son Le Hoang, 2026. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Trimmed, annotated, combined and re-encoded; audio removed. <a href="https://github.com/bmaged23/multi-person-attention-tracking/blob/main/docs/DEMO_SOURCE.md">Full attribution and modifications ↗</a></p>
+    </section>
+    <section class="metrics" aria-label="Measured development results">
+      <article><strong>3.30×</strong><h3>Native workflow speedup</h3><p>48.88 → 14.79 seconds on the same 100 AMI frames, with identical observation JSONL.</p></article>
+      <article><strong>100</strong><h3>Human-annotated images</h3><p>Detection evaluated against COCO person boxes. This is case coverage, not 100% accuracy.</p></article>
+      <article><strong>41</strong><h3>Automated tests</h3><p>Application regressions, plus separate real-model, API and browser release checks.</p></article>
+    </section>
+    <p class="caption">Small exposed development suites on one GTX 1660 Ti; native and container measurements have separate scopes. <a href="https://github.com/bmaged23/multi-person-attention-tracking/blob/main/docs/evaluation/README.md">Read the complete evaluation and limitations ↗</a></p>
+    <section class="pipeline" aria-labelledby="pipeline-title"><p class="eyebrow">INPUTS → MEASUREMENTS → OUTPUTS</p><h2 id="pipeline-title">Inside the pipeline</h2><img src="assets/pipeline.svg" alt="Video or camera input flows through YOLO person detection, CPU face landmarks, IoU tracking and visual scoring into JSON and face-only video annotations." loading="lazy"><p>YOLO supports CUDA person inference; MediaPipe landmarks remain on CPU. Missing faces stay unknown. The score does not measure comprehension, and spatial IDs can swap at crossings.</p></section>
+    <section class="run"><div><p class="eyebrow">RUN THE APPLICATION</p><h2>Your videos.<br>Your local GPU.</h2><p>The complete Docker image includes the UI, API and production models. No cloud account or inference API key is needed.</p></div><div class="links"><a class="primary" href="https://github.com/bmaged23/multi-person-attention-tracking/blob/main/deployment/docker/README.md">Docker pull & run ↗</a><a href="https://github.com/bmaged23/multi-person-attention-tracking/blob/main/README.md#clone-install-and-run-from-source">Install from source ↗</a><a href="https://github.com/bmaged23/multi-person-attention-tracking/blob/main/docs/api/README.md">API guide ↗</a><a href="https://github.com/bmaged23/multi-person-attention-tracking/releases/tag/v1.0.0">Release v1.0.0 ↗</a></div></section>
+    <footer>Built by Bola Maged Ramses Nessim. This static demo site plays recorded output; run the Python/GPU application locally to analyze your own videos. <a href="https://github.com/bmaged23/multi-person-attention-tracking/blob/main/docs/deployment/README.md">CI/CD and deployment guide</a></footer>
+  </main>
+</body>
+</html>

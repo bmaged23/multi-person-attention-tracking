@@ -84,3 +84,13 @@ libraries are checked first, with bounded package installation only if missing.
 This avoids an unconditional FFmpeg installation and its large system dependency
 transaction on every check. Native setup and the qualified container still use
 their documented system FFmpeg. All API/video tests remain enabled.
+
+
+## Demo website deployment
+
+The separate [Demo site deployment workflow](../../.github/workflows/pages.yml)
+builds a small static site with the annotated MP4 and pipeline SVG, then publishes
+it through the `github-pages` environment. Successful runs create the repository's
+GitHub Deployments entry. [Demo URL](https://bmaged23.github.io/multi-person-attention-tracking/)
+· [Site reproduction](../site/README.md). This workflow does not rebuild the Docker
+image or host the Python/GPU API. Site changes deploy automatically on main.
