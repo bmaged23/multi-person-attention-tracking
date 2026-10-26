@@ -94,7 +94,7 @@ def main():
                     for key in row
                     if key != "elapsed_seconds"
                 },
-                "scope": "Docker cgroup CPU/memory including speech children; CPU100%=one logical core. GPU is whole-device usage, cloud hardware excluded. Coarse sampling can miss peaks.",
+                "scope": "Docker cgroup CPU/memory including API, vision workers and FFmpeg; CPU100%=one logical core. GPU is whole-device usage. No cloud inference is used. Coarse sampling can miss peaks.",
             }
             args.output.write_text(json.dumps(summary, indent=2) + "\n")
         time.sleep(1)

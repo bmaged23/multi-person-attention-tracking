@@ -26,7 +26,7 @@ def main():
     result = request(
         "https://hub.docker.com/v2/repositories/bmaged23/multi-person-attention-tracking/",
         {
-            "description": "GPU person detection, CPU face landmarks and visual attention tracking with a video API and evaluated Docker releases.",
+            "description": "GPU visual attention with YOLO, MediaPipe, a video API and evaluated releases.",
             "full_description": (root / "deployment/dockerhub/README.md").read_text(),
         },
         login["token"],
