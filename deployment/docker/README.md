@@ -5,8 +5,7 @@
 The image packages the upload UI, API, CLI, exact Python requirements, YOLOv8n ONNX
 and MediaPipe Face Landmarker. Models are checksum-verified at build time. No Git
 clone, cloud account, API key or startup weight download is required for image use.
-Public release qualification is being prepared; final digest/results will be
-recorded after the complete GPU gate and public pull checks pass.
+The [qualified release](https://github.com/bmaged23/multi-person-attention-tracking/actions/runs/40317220913) passed the exact-image GPU gate, anonymous public pull and real GPU/CPU video jobs.
 
 ## GPU pull and run
 
@@ -52,8 +51,7 @@ docker run --rm --name attention \
 ```
 
 The bundle still includes CUDA libraries; CPU mode does not make it a smaller image.
-Both modes must pass actual public-image video-job checks before being called
-verified. Native macOS/ARM containers are outside this release's tested scope.
+Both modes passed actual public-image video-job checks in the linked release. Native macOS/ARM containers are outside this release's tested scope.
 
 ## Try a licensed sample without cloning
 
@@ -92,3 +90,20 @@ docker run --rm --gpus all -p 127.0.0.1:8770:8770 attention:local
 The image includes upstream model/license notices and a corresponding-source label.
 It excludes uploads, raw evaluation images/clips and private local experiments.
 See [third-party terms](../../docs/THIRD_PARTY.md) and the root AGPL license.
+
+
+## Immutable qualified version
+
+Application source: `178bd577e507b6aaee770cbf050b756411f68d7d`.
+
+```text
+bmaged23/multi-person-attention-tracking@sha256:989a26171b94321e4e4541b0ae46789ca6b82e69b986667e49b3e394b5a65956
+```
+
+Use that reference instead of `:gpu` in both pull and run commands to retain this
+version. Registry compressed size: **2,198,652,265 bytes** (~2.20 GB); Docker-reported
+local size: **6.68 GB**. These are distinct accounting measures, not two download sizes.
+The GPU gate passed 41 tests, 100 human-box detection cases, synthetic tracking,
+real API artifacts and browser playback. Public distribution then passed both a
+GPU job and a CPU-mode job, each 50 frames. See the
+[evaluation report](../../docs/evaluation/README.md) for measured resources and limits.

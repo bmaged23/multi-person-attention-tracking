@@ -83,7 +83,28 @@ not face recall against annotations. Crowded scenes, back-facing people, occlusi
 and duplicate detections remain limitations.
 
 **[Evaluation README: datasets, split protocol, failures, stage charts and resource scope](docs/evaluation/README.md)**.
-Container qualification and public-image evidence are recorded there when complete.
+The exact-image qualification and public GPU/CPU verification are recorded below.
+
+### Verified public container
+
+[Passing release workflow](https://github.com/bmaged23/multi-person-attention-tracking/actions/runs/40317220913) · [Immutable release evidence](docs/evaluation/measurements/public-release.json)
+
+| Exact-container check | Measured result |
+| --- | --- |
+| Offline tests / detection | **41 tests**, **100 human-annotated images**; native detection counts preserved |
+| Association and workflow | All four tracking non-regression floors passed; both **50-frame** API jobs matched their frozen reports |
+| Browser | Upload, H.264 playback and all three artifacts passed; **zero JavaScript errors** |
+| GPU API job processing | **7.95 s / 8.35 s** for the two 2-second AMI fixtures |
+| Container RAM | Sampled **1,160 MiB peak** |
+| Container CPU | Mean **237%**, peak **330%**; 100% is one logical core |
+| Whole-device GPU | Sampled **179 MiB peak VRAM**, utilization **35% peak** |
+| Public distribution | Anonymous pull and real **GPU and CPU-mode** video jobs passed |
+
+The 13 resource samples cover the container/API phase and include FFmpeg, unlike
+the native process-only measurements. GPU values cover the whole device; sampling
+can miss peaks. Inference is local. The source is `178bd577e507b6aaee770cbf050b756411f68d7d`;
+the [full evaluation report](docs/evaluation/README.md) separates native, container,
+human-box, synthetic and model-derived evidence.
 
 ## API — upload, status and results
 
@@ -111,9 +132,8 @@ service; live-camera CLI capture is separate from its file-upload HTTP contract.
 [Public Docker Hub repository](https://hub.docker.com/r/bmaged23/multi-person-attention-tracking)
 
 The bundle includes the UI/API, CLI, pinned dependencies and both production models.
-No source checkout, credentials or first-run model download is needed. The first
-public release is pending exact-container qualification; do not treat native results
-above as an already qualified image.
+No source checkout, credentials or first-run model download is needed. The
+[qualified public release](https://github.com/bmaged23/multi-person-attention-tracking/actions/runs/40317220913) passed actual inference after an anonymous pull.
 
 ```bash
 docker pull bmaged23/multi-person-attention-tracking:gpu
@@ -126,7 +146,17 @@ docker run --rm --name attention --gpus all \
 After initialization, open **http://localhost:8770**. Stop with Ctrl+C. Linux amd64
 NVIDIA GPU containers are the primary route. CPU mode uses the same bundle with
 `-e ATTENTION_PERSON_DEVICE=cpu` and without `--gpus all`; public checks cover both
-modes before release completion. Results persist in the bounded named volume.
+modes in the verified release. Results persist in the bounded named volume.
+
+For an immutable version, use this reference in the pull/run commands:
+
+```text
+bmaged23/multi-person-attention-tracking@sha256:989a26171b94321e4e4541b0ae46789ca6b82e69b986667e49b3e394b5a65956
+```
+
+The registry download is approximately **2.20 GB compressed**; Docker reports
+**6.68 GB** locally. The [Docker guide](deployment/docker/README.md) explains disk
+headroom, CPU mode and model provisioning.
 
 **[Docker README: requirements, direct pull/run, sample clip, CPU mode, updates and local build](deployment/docker/README.md)**.
 

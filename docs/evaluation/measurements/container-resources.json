@@ -1,0 +1,26 @@
+{
+  "samples": 13,
+  "metrics": {
+    "cpu_percent_one_core": {
+      "mean": 236.76307692307694,
+      "peak": 330.45
+    },
+    "memory_mib": {
+      "mean": 861.5024615384615,
+      "peak": 1160.192
+    },
+    "pids": {
+      "mean": 151.84615384615384,
+      "peak": 209
+    },
+    "gpu_vram_mib": {
+      "mean": 162.76923076923077,
+      "peak": 179.0
+    },
+    "gpu_util_percent": {
+      "mean": 19.23076923076923,
+      "peak": 35.0
+    }
+  },
+  "scope": "Docker cgroup CPU/memory including API, vision workers and FFmpeg; CPU100%=one logical core. GPU is whole-device usage. No cloud inference is used. Coarse sampling can miss peaks."
+}

@@ -5,8 +5,7 @@
 Measurements below are native Linux/WSL2 results on a GTX 1660 Ti with 6 GiB VRAM,
 Python 3.12.15 and the exact checked-in requirements. CUDA accelerates person
 inference; MediaPipe landmarks stay on CPU. No model was trained or fine-tuned.
-Exact-container qualification and public release evidence will be added after the
-candidate passes; native results do not certify an image by themselves.
+The [qualified container release](#verified-container-release--26-october-2026) below records separate image, resource and public-distribution evidence.
 
 ## Independent detection references
 
@@ -59,7 +58,7 @@ established attention-scoring thresholds were changed.
 All three runtimes returned126TP /94FP /56FN. The OpenCV→CUDA comparison is about
 5.76× and includes a runtime change. ONNX CPU→CUDA is about 4.37×. These timings
 include tiling/preprocessing/postprocessing but exclude file decoding and model load.
-Three warmup detections preceded each 64-image pass; no general tail-latency claim
+The component benchmark used four inference threads. Three warmup detections preceded each 64-image pass; no general tail-latency claim
 is made from this sample.
 
 ![Native component and full workflow latency](charts/latency-comparison.png)
@@ -94,7 +93,7 @@ Sampling covers initialization and both workflows. Process CPU/RSS exclude the
 FFmpeg child; whole-device GPU and system RAM may include unrelated host work.
 Coarse samples can miss peaks. Four workers reduced observed peak RSS to 1,127.6 MiB
 but were slightly slower; the unchanged eight-worker configuration remains the
-performance default. No paid service or monetary cost was involved in inference.
+performance default. Inference uses no paid API calls; electricity and hardware costs were not measured.
 
 ## Tracking and attention scope
 
@@ -172,3 +171,48 @@ comparisons. Raw stage traces and output videos remain under ignored local
 `.evaluation-local/`. The release pipeline adds an exact-image aggregate, sampled
 container resources, source commit, digest and anonymous public inference evidence
 when qualification completes.
+
+
+## Verified container release — 26 October 2026
+
+[Complete passing workflow](https://github.com/bmaged23/multi-person-attention-tracking/actions/runs/40317220913) for source `178bd577e507b6aaee770cbf050b756411f68d7d`.
+Image: `bmaged23/multi-person-attention-tracking@sha256:989a26171b94321e4e4541b0ae46789ca6b82e69b986667e49b3e394b5a65956`.
+
+The exact candidate passed **41 container tests**, the **64+36 human-box detector
+cases** with unchanged TP/FP/FN counts, all four synthetic tracking floors, and two
+50-frame API workflows with matching observation counts, label distributions and
+track counts. Every output video decoded to 50 frames. Chromium completed a real
+upload, H.264 playback and all three downloads with zero JavaScript errors.
+The frozen crossing limitation remains IDF1=0.775; no attention accuracy is implied.
+
+The two GPU API jobs took **7.951 s and 8.354 s**, including processing/encoding after
+upload. Input fixtures are lossless FFV1 derivatives of the native benchmark pixels;
+these container observations are not a controlled Docker-overhead experiment.
+
+Thirteen samples through the API phase recorded cgroup RAM mean **861.5 MiB**,
+peak **1,160.2 MiB**; CPU mean **236.76%**, peak **330.45%** (one core=100%).
+Whole-device VRAM peaked at **179 MiB**, GPU utilization mean **19.23%**, peak **35%**.
+These include API/vision workers and FFmpeg within the container, whereas native
+process CPU/RSS exclude FFmpeg. Sampling is coarse and can miss peaks; device-wide
+GPU usage may include other host work. No cloud inference is involved.
+
+After publication, the trusted runner pulled the public digest **anonymously** and
+ran normal startup plus an actual 50-frame API inference job in **both GPU and
+CPU modes**. The CPU run did not request Docker GPU passthrough. Both returned
+reports and annotated video; this verifies usability separately from GPU quality
+metrics. The public image includes production weights; there is no startup download.
+Registry compressed size is 2,198,652,265 bytes; Docker reports 6.68 GB locally.
+
+Evidence: [aggregate gate](measurements/qualified-container.json),
+[container resources](measurements/container-resources.json),
+[public distribution record](measurements/public-release.json). Detailed videos,
+JSONL, job outputs and logs are retained privately under the successful CI run ID.
+
+The [first release attempt](https://github.com/bmaged23/multi-person-attention-tracking/actions/runs/40314322941)
+passed its model/application gates and copied the image, but its Docker Hub overview
+update failed HTTP 400 because the short description exceeded the field limit.
+Post-publication verification was skipped, so that overall run remains failed.
+The description was shortened and independently verified; a copied resource-scope
+label was corrected from speech to vision. The new source then passed the full
+pipeline above. No model output, input reference or quality threshold was changed
+to obtain the passing result.
