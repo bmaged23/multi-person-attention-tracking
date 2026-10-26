@@ -41,6 +41,8 @@ class Settings:
     person_model_path: Path = _setting(
         "person_model_path", ROOT / "models/yolov8n.onnx"
     )
+    person_backend: str = _setting("person_backend", "opencv")
+    person_device: str = _setting("person_device", "cpu")
     person_confidence: float = _setting("person_confidence", 0.15)
     person_tiles: int = _setting("person_tiles", 2)
     detection_mode: str = _setting("detection_mode", "people")
@@ -86,6 +88,12 @@ class Settings:
             raise ValueError("invalid original pitch or score bounds")
         if not math.isfinite(self.iou_threshold) or not 0 <= self.iou_threshold <= 1:
             raise ValueError("iou_threshold must be in [0,1]")
+        if self.person_backend not in {"opencv", "onnx"}:
+            raise ValueError("person_backend must be opencv or onnx")
+        if self.person_device not in {"cpu", "cuda"}:
+            raise ValueError("person_device must be cpu or cuda")
+        if self.person_device == "cuda" and self.person_backend != "onnx":
+            raise ValueError("CUDA person detection requires person_backend=onnx")
         if self.device not in {"cpu", "gpu"}:
             raise ValueError("device must be cpu or gpu")
         for key in (
@@ -111,3 +119,29 @@ class Settings:
             raise ValueError("pitch bounds must be finite")
         if not 0 < self.iris_side < 0.5:
             raise ValueError("iris_side must be between zero and .5")
+
+
+@dataclass(frozen=True)
+class ServiceSettings:
+    """Bounded local video-processing API; values have ATTENTION_ environment keys."""
+
+    data_dir: Path = _setting("api_data_dir", ROOT / "data/api")
+    upload_timeout_seconds: float = _setting("api_upload_timeout_seconds", 60.0)
+    max_upload_mb: int = _setting("api_max_upload_mb", 64)
+    max_clip_seconds: float = _setting("api_max_clip_seconds", 10.0)
+    max_frame_pixels: int = _setting("api_max_frame_pixels", 1920 * 1080)
+    max_source_fps: float = _setting("api_max_source_fps", 60.0)
+    retained_jobs: int = _setting("api_retained_jobs", 10)
+
+    def __post_init__(self):
+        for name in [
+            "upload_timeout_seconds",
+            "max_upload_mb",
+            "max_clip_seconds",
+            "max_frame_pixels",
+            "max_source_fps",
+            "retained_jobs",
+        ]:
+            value = getattr(self, name)
+            if not math.isfinite(value) or value <= 0:
+                raise ValueError(name + " must be finite and positive")

@@ -39,3 +39,10 @@ dist/
 .DS_Store
 Thumbs.db
 *.log
+
+# Service data and private evaluation runs
+/data/
+/.evaluation-local/
+/requirements/.generated/
+/playwright-report/
+/test-results/

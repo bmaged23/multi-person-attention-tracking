@@ -44,3 +44,11 @@ The dataset contributors do not endorse this application or its predictions.
 Source recordings remain local and excluded from Git. The credited derivative
 MP4 and GIF are publicly included under CC BY 4.0. Earlier AMI, RWEAD and
 research-restricted CDED-7 samples remain local; they are not the current demo.
+
+
+## Upload-interface screenshot
+
+`media/upload-api.png` shows the new API processing an AMI IS1004d left-camera
+fixture under a two-second test cap. This is separate from the AIRC classroom
+preview above. AMI source, CC-BY4.0 license and lossless modifications are recorded
+in [evaluation/fixtures/README.md](../evaluation/fixtures/README.md).

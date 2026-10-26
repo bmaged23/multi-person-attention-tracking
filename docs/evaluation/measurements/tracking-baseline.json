@@ -1,0 +1,34 @@
+{
+  "cases": 4,
+  "results": [
+    {
+      "case_id": "stationary-reorder",
+      "observations": 80,
+      "identity_switches": 0,
+      "predicted_tracks": 2,
+      "idf1": 1.0
+    },
+    {
+      "case_id": "slow-motion",
+      "observations": 80,
+      "identity_switches": 0,
+      "predicted_tracks": 2,
+      "idf1": 1.0
+    },
+    {
+      "case_id": "short-occlusion",
+      "observations": 75,
+      "identity_switches": 0,
+      "predicted_tracks": 2,
+      "idf1": 1.0
+    },
+    {
+      "case_id": "crossing-stress",
+      "observations": 80,
+      "identity_switches": 2,
+      "predicted_tracks": 2,
+      "idf1": 0.775
+    }
+  ],
+  "scope": "Synthetic perfect boxes with independently generated identity paths; no missed detections. IDF1 uses global one-to-one identity matching. Crossing can be unidentifiable from IoU geometry alone; not a real-world MOT benchmark."
+}

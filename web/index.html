@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multi-person visual attention</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script src="/assets/client.js" defer></script>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">VIDEO ANALYSIS · LOCAL INFERENCE</p>
+    <h1>Multi-person<br><span>visual attention</span></h1>
+    <p class="intro">Track people and measure visible head and eye signals. Review the annotated video and download each observation.</p>
+    <section class="panel">
+      <form id="form">
+        <label class="upload" for="video">Choose a video<input type="file" id="video" accept="video/mp4,video/quicktime,video/x-msvideo,video/webm,video/x-matroska,.mkv" required></label>
+        <div class="controls"><label for="seconds">Analyze the first <input type="number" id="seconds" min="0.1" step="0.1" value="2" required> seconds</label><button id="submit" type="submit">Analyze video <span aria-hidden="true">→</span></button></div>
+      </form>
+      <p id="limits" class="muted">Loading processing limits…</p>
+      <p id="status" role="status" aria-live="polite">Ready.</p>
+      <div id="results"></div>
+    </section>
+    <p class="note">Labels are visual heuristics, not evidence of comprehension. Track IDs identify positions within a session, not biometric identities.</p>
+    <footer><a href="/docs">Interactive API</a><a href="/config">Processing limits</a><a href="https://github.com/bmaged23/multi-person-attention-tracking">Source & evaluation</a></footer>
+  </main>
+</body>
+</html>

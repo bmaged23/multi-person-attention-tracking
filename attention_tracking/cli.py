@@ -24,6 +24,12 @@ def main(live=False):
     parser.add_argument("--annotated-video", type=Path)
     parser.add_argument("--names", type=Path, help='JSON map: {"person_001": "Alex"}')
     parser.add_argument("--device", choices=["cpu", "gpu"], default=defaults.device)
+    parser.add_argument(
+        "--person-backend", choices=["opencv", "onnx"], default=defaults.person_backend
+    )
+    parser.add_argument(
+        "--person-device", choices=["cpu", "cuda"], default=defaults.person_device
+    )
     parser.add_argument("--max-faces", type=int, default=defaults.max_faces)
     parser.add_argument(
         "--tiles",
@@ -54,6 +60,8 @@ def main(live=False):
     settings = replace(
         Settings(),
         device=args.device,
+        person_backend=args.person_backend,
+        person_device=args.person_device,
         max_faces=args.max_faces,
         tile_grid=args.tiles,
         tile_workers=args.tile_workers,

@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "scope": "Exposed development regression gate. COCO human-box operating-point metrics, synthetic tracker stress and model-derived workflow regression counts are distinct evidence. Thresholds frozen before container qualification.",
+  "detection": {
+    "cases": 64,
+    "true_positive_min": 126,
+    "false_positive_max": 94,
+    "false_negative_max": 56,
+    "manifest_sha256": "aabbc0f3b35e722f849bc976081850ac4a3db048eedf9b70981e82864b0f5b50"
+  },
+  "tracking": {
+    "stationary-reorder": 1.0,
+    "slow-motion": 1.0,
+    "short-occlusion": 1.0,
+    "crossing-stress": 0.775
+  },
+  "workflow": {
+    "L": {
+      "source_sha256": "e971552275dd03a3f70e86e05218707648baf12c022130a9cc38c9b13e14b84f",
+      "frames": 50,
+      "tracks": 8,
+      "label_counts": {
+        "attentive": 98,
+        "partial": 0,
+        "non_attentive": 0,
+        "drowsy": 7,
+        "no_face": 217
+      },
+      "original_clip_sha256": "02a8a8c003eaa8f0478468cfc72cf455fea4860ee50a720faadd32fc5726a1da",
+      "fixture": "evaluation/fixtures/ami-L.mkv"
+    },
+    "R": {
+      "source_sha256": "4d99f37de5ac69367d716b23ffe8c5eb561fa4ef4953b22c09b74bfc65c8b851",
+      "frames": 50,
+      "tracks": 8,
+      "label_counts": {
+        "attentive": 57,
+        "partial": 0,
+        "non_attentive": 0,
+        "drowsy": 12,
+        "no_face": 242
+      },
+      "original_clip_sha256": "daf3c9c198501c7009c166a08faadf31d864724fadbcb80bfde8e70b1e449439",
+      "fixture": "evaluation/fixtures/ami-R.mkv"
+    }
+  },
+  "holdout_detection": {
+    "cases": 36,
+    "true_positive_min": 65,
+    "false_positive_max": 40,
+    "false_negative_max": 40,
+    "manifest_sha256": "aab568574081723c3791fa1019bbda738809f6a64d963f54a4bf05a312b30fda"
+  }
+}

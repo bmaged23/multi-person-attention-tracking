@@ -1,0 +1,92 @@
+{
+  "backend": "onnx",
+  "person_device": "cuda",
+  "landmark_device": "cpu",
+  "workers": 8,
+  "seconds_per_clip": 2,
+  "load_and_warmup_seconds": 2.5173515930000576,
+  "clips": [
+    {
+      "view": "L",
+      "source_sha256": "02a8a8c003eaa8f0478468cfc72cf455fea4860ee50a720faadd32fc5726a1da",
+      "frames": 50,
+      "tracks": 8,
+      "label_counts": {
+        "attentive": 98,
+        "partial": 0,
+        "non_attentive": 0,
+        "drowsy": 7,
+        "no_face": 217
+      },
+      "performance": {
+        "elapsed_seconds": 7.185821371999964,
+        "processed_fps": 6.95814564011475,
+        "stage_seconds": {
+          "decode": 0.047342298999183186,
+          "detection_and_landmarks": 6.625942875999954,
+          "scoring_tracking_reporting": 0.0892299999993611,
+          "annotation_encoding": 0.1315950990001511,
+          "final_encoding": 0.2865945979999651,
+          "person_detection": 4.1025595859994155,
+          "landmarks": 2.5229890899997827
+        },
+        "scope": "Full run includes initialization when backend is owned; detection sub-stages are nested, not additive with detection_and_landmarks."
+      }
+    },
+    {
+      "view": "R",
+      "source_sha256": "daf3c9c198501c7009c166a08faadf31d864724fadbcb80bfde8e70b1e449439",
+      "frames": 50,
+      "tracks": 8,
+      "label_counts": {
+        "attentive": 57,
+        "partial": 0,
+        "non_attentive": 0,
+        "drowsy": 12,
+        "no_face": 242
+      },
+      "performance": {
+        "elapsed_seconds": 7.601098665999871,
+        "processed_fps": 6.577995319578994,
+        "stage_seconds": {
+          "decode": 0.032309100000475155,
+          "detection_and_landmarks": 7.059481768000069,
+          "scoring_tracking_reporting": 0.07301829900120538,
+          "annotation_encoding": 0.12700409999888507,
+          "final_encoding": 0.30495999899994786,
+          "person_detection": 4.455529282000043,
+          "landmarks": 2.6035530860001472
+        },
+        "scope": "Full run includes initialization when backend is owned; detection sub-stages are nested, not additive with detection_and_landmarks."
+      }
+    }
+  ],
+  "resources": {
+    "samples": 34,
+    "metrics": {
+      "rss_mib": {
+        "mean": 1187.8130744485295,
+        "peak": 1333.5078125
+      },
+      "cpu_percent_one_core": {
+        "mean": 265.94705882352946,
+        "peak": 1273.2
+      },
+      "system_ram_used_mib": {
+        "mean": 2254.597771139706,
+        "peak": 2465.98046875
+      },
+      "gpu_vram_mib": {
+        "mean": 156.38235294117646,
+        "peak": 166.0
+      },
+      "gpu_util_percent": {
+        "mean": 23.0,
+        "peak": 35.0
+      }
+    },
+    "scope": "Process RSS and CPU (100%=one core); whole-device GPU and system RAM, samples may miss peaks. Includes initialization and FFmpeg work; CPU excludes FFmpeg child."
+  },
+  "attention_accuracy_measured": false,
+  "scope": "Two CC-BY4.0 AMI meeting excerpts, fixed source hashes. Observed labels are not attention ground truth. Real inference, tracking, JSON/JSONL and H264 output."
+}

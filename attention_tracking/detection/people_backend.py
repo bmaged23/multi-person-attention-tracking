@@ -2,6 +2,7 @@
 
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import replace
+import time
 
 import cv2
 import numpy as np
@@ -28,6 +29,7 @@ def head_region(box, shape):
 class PeopleBackend:
     def __init__(self, settings):
         self.settings = settings
+        self.last_timings = {}
         self.detector = PersonDetector(settings)
         self.models = []
         self.executor = None
@@ -92,18 +94,28 @@ class PeopleBackend:
         return [self._analyze(frame, box, model, seconds) for box in boxes]
 
     def detect(self, frame, seconds):
+        started = time.perf_counter()
         boxes = self.detector.detect(frame)
+        detected = time.perf_counter()
+        self.last_timings = {
+            "person_detection_seconds": detected - started,
+            "landmarks_seconds": 0.0,
+        }
         if not boxes:
             return []
         if not self.executor:
-            return self._group(frame, boxes, self.models[0], seconds)
+            faces = self._group(frame, boxes, self.models[0], seconds)
+            self.last_timings["landmarks_seconds"] = time.perf_counter() - detected
+            return faces
         jobs = [
             (model, boxes[i :: len(self.models)]) for i, model in enumerate(self.models)
         ]
         groups = self.executor.map(
             lambda job: self._group(frame, job[1], job[0], seconds), jobs
         )
-        return [person for group in groups for person in group]
+        faces = [person for group in groups for person in group]
+        self.last_timings["landmarks_seconds"] = time.perf_counter() - detected
+        return faces
 
     def close(self):
         if self.executor:

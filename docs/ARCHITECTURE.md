@@ -6,7 +6,7 @@ attention does not require classroom filenames or an external recognition servic
 
 ## Person-first observation
 
-OpenCV DNN runs a YOLOv8n COCO ONNX export, retaining person-class boxes only.
+The original OpenCV DNN CPU path and the optional ONNX Runtime CPU/CUDA paths run the same YOLOv8n COCO ONNX export, retaining person-class boxes only.
 Full-frame and overlapping-region observations are merged before tracking;
 head/upper-body copies from different regions are suppressed with containment
 and aligned-head geometry, retaining distinct neighboring heads.
@@ -44,3 +44,16 @@ encoding retains source frame count and removes its temporary recording.
 Dummy IDs are session-local spatial tracks. Missing detections, occlusion, and
 large box changes can fragment them. No identity embedding, enrollment service,
 room/date filename parser, or classroom-specific trainee schema is required.
+
+
+## Service and release boundary
+
+The upload UI in `web/` calls the FastAPI job API. An ASGI limiter bounds request
+bytes before multipart parsing, and one inference worker owns loaded models.
+`ServiceSettings` limits source duration, frame dimensions, job retention and
+upload time. Reports include non-overlapping top-level stage timings and nested
+person/landmark timings. See [API](api/README.md),
+[Docker](../deployment/docker/README.md) and [CI/CD](deployment/README.md).
+
+CUDA here means YOLO's verified ONNX execution provider; it does not imply GPU
+MediaPipe execution. The landmark CPU path and original scoring remain unchanged.

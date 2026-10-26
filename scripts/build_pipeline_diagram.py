@@ -12,8 +12,8 @@ BG, TEXT, MUTED = "#0b1220", "#e8eef8", "#a7b7cc"
 GREEN, BLUE, GOLD = "#67dec0", "#88baff", "#ffc77a"
 # Shared layout: the pipeline detects/analyses before tracking and scoring.
 NODES = [
-    ("input", (40, 140, 290, 230), "Video / live camera", "Decode every frame", BLUE),
-    ("person", (365, 140, 645, 230), "YOLOv8n · OpenCV", "Person boxes · CPU", BLUE),
+    ("input", (40, 140, 290, 230), "Video / camera / API", "Decode every frame", BLUE),
+    ("person", (365, 140, 645, 230), "YOLOv8n · ONNX", "CUDA / CPU person boxes", BLUE),
     (
         "crop",
         (725, 140, 1005, 230),
@@ -90,7 +90,7 @@ LABELS = [
     (
         40,
         86,
-        "Shared pipeline for video files and camera streams · dummy session-local names",
+        "Shared CLI and upload API pipeline · session-local spatial IDs",
         MUTED,
         22,
     ),

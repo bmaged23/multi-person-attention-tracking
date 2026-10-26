@@ -45,3 +45,20 @@ airc_provenance.json.
 Older RWEAD 1.0 and AMI samples remain local under their CC BY 4.0 terms. Their
 metadata and historical validation reports are retained separately. CDED-7
 restricted classroom footage is not used in public media.
+
+## Application image and evaluation additions
+
+The application source is distributed under **AGPL-3.0-only**; see the root
+[LICENSE](../LICENSE). The public image's source label links to this repository,
+and its revision label identifies the corresponding source commit. YOLO model
+weights retain Ultralytics' terms; MediaPipe components retain Google's upstream
+terms. Apache-2.0 text is included in `licenses/APACHE_2.0.txt`.
+The image includes both model bundles and these notices. It excludes research
+footage, private API uploads, evaluation images and credentials.
+
+COCO person evaluation uses human annotations mirrored by
+https://huggingface.co/datasets/detection-datasets/coco at revision
+`cf0b22332314a937e9dc8a1957b21725430bb41d`. Original COCO attribution and terms:
+https://cocodataset.org/#termsofuse . COCO annotations use CC BY 4.0; image copyright
+and licenses remain with the original owners. Only annotation references, hashes
+and aggregate measurements are tracked here; source images stay local.

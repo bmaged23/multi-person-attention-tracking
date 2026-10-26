@@ -42,9 +42,43 @@ class PersonDetector:
         if not Path(settings.person_model_path).is_file():
             raise FileNotFoundError("Run python scripts/download_person_model.py first")
         self.settings = settings
-        self.net = cv2.dnn.readNetFromONNX(str(settings.person_model_path))
-        self.net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
-        self.net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
+        self.session = None
+        if settings.person_backend == "onnx":
+            import onnxruntime as ort
+
+            if settings.person_device == "cuda":
+                from attention_tracking.runtime import preload_cuda
+
+                preload_cuda()
+                if "CUDAExecutionProvider" not in ort.get_available_providers():
+                    raise RuntimeError("ONNX Runtime CUDA provider is unavailable")
+            options = ort.SessionOptions()
+            options.intra_op_num_threads = settings.tile_workers
+            options.inter_op_num_threads = 1
+            providers = (
+                ["CUDAExecutionProvider", "CPUExecutionProvider"]
+                if settings.person_device == "cuda"
+                else ["CPUExecutionProvider"]
+            )
+            self.session = ort.InferenceSession(
+                str(settings.person_model_path), options, providers=providers
+            )
+            self.session.disable_fallback()
+            if self.session.get_providers()[0] != providers[0]:
+                raise RuntimeError(
+                    "Requested inference provider failed to initialize; refusing silent CPU fallback"
+                )
+            self.input_name = self.session.get_inputs()[0].name
+        else:
+            self.net = cv2.dnn.readNetFromONNX(str(settings.person_model_path))
+            self.net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
+            self.net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
+
+    def forward(self, blob):
+        if self.session is not None:
+            return self.session.run(None, {self.input_name: blob})[0]
+        self.net.setInput(blob)
+        return self.net.forward()
 
     def detect(self, frame):
         height, width = frame.shape[:2]
@@ -68,13 +102,13 @@ class PersonDetector:
                 cv2.BORDER_CONSTANT,
                 value=(114, 114, 114),
             )
-            self.net.setInput(
+            output = self.forward(
                 cv2.dnn.blobFromImage(
                     image, 1 / 255, (640, 640), swapRB=True, crop=False
                 )
             )
             found, values = decode_predictions(
-                self.net.forward(),
+                output,
                 scale,
                 (pad_x, pad_y),
                 (x1, y1),
