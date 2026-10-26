@@ -12,7 +12,30 @@ jobs:
         with:
           python-version: '3.12.15'
           cache: pip
-      - run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg libgl1 libglib2.0-0
+      - name: Check host vision libraries
+        run: |
+          if ! python -c "import ctypes; ctypes.CDLL('libGL.so.1'); ctypes.CDLL('libglib-2.0.so.0')"; then
+            timeout 180 sudo apt-get -o Acquire::Retries=2 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20 update -qq
+            timeout 180 sudo apt-get -o Acquire::Retries=2 -o Acquire::http::Timeout=20 install -y --no-install-recommends libgl1 libglib2.0-0
+          fi
+      - name: Prepare isolated pinned FFmpeg for CI
+        run: |
+          tools="$RUNNER_TEMP/attention-media-tools"
+          python -m pip install --no-deps --target "$tools/python" imageio-ffmpeg==0.6.0
+          CI_MEDIA_TOOLS="$tools" PYTHONPATH="$tools/python" python - <<'PYTHON'
+          import os
+          from pathlib import Path
+          import imageio_ffmpeg
+          tools = Path(os.environ["CI_MEDIA_TOOLS"])
+          binary = Path(imageio_ffmpeg.get_ffmpeg_exe()).resolve()
+          assert binary.is_relative_to(tools / "python"), "Expected the pinned bundled FFmpeg"
+          folder = tools / "bin"
+          folder.mkdir(parents=True, exist_ok=True)
+          (folder / "ffmpeg").symlink_to(binary)
+          with open(os.environ["GITHUB_PATH"], "a") as output:
+              output.write(str(folder) + "\n")
+          PYTHON
+          "$tools/bin/ffmpeg" -version
       - run: python -m pip install --no-deps -r requirements.txt
       - run: python -m pip check
       - run: python -m unittest discover -s tests -v

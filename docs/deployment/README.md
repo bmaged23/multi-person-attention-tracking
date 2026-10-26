@@ -72,3 +72,15 @@ Public verification runs **after** publication and can fail the overall workflow
 It does not automatically roll back a tag already copied to Hub. CD here delivers
 a verified image; it does not update a running user application or deploy a public
 hosted server. Pull/run instructions are in the [Docker README](../../deployment/docker/README.md).
+
+
+## Hosted media tooling
+
+Hosted offline checks use the FFmpeg binary from pinned
+[`imageio-ffmpeg==0.6.0`](https://github.com/imageio/imageio-ffmpeg/tree/v0.6.0),
+installed into an isolated runner-temporary prefix. Only its executable is added
+to PATH; the application's exact 58-package environment stays separate. Host GL/GLib
+libraries are checked first, with bounded package installation only if missing.
+This avoids an unconditional FFmpeg installation and its large system dependency
+transaction on every check. Native setup and the qualified container still use
+their documented system FFmpeg. All API/video tests remain enabled.
