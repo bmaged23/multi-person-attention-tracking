@@ -17,9 +17,9 @@ small development benchmarks, not a real-time throughput or attention-accuracy g
 
 ## Demo and interface
 
-[![Play the annotated classroom demo](docs/media/annotated-demo-poster.jpg)](https://bmaged23.github.io/multi-person-attention-tracking/)
+[![Looping annotated classroom demo](docs/media/attention-demo.gif)](https://bmaged23.github.io/multi-person-attention-tracking/)
 
-**[Play the annotated video demo](https://bmaged23.github.io/multi-person-attention-tracking/)** · [Original looping GIF](docs/media/attention-demo.gif)
+**[Play the annotated video demo with playback controls](https://bmaged23.github.io/multi-person-attention-tracking/)**
 
 The existing classroom demo shows more than ten students in one view. Source:
 **AIRC-SMARTCLASS Part 2**, CC BY 4.0; excerpts were trimmed, annotated and combined.
