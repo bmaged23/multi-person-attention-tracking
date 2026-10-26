@@ -16,3 +16,5 @@ continue to work. They do not describe the current GPU/API release.
 Use the [current evaluation report](../README.md) and
 [current aggregates](../measurements/README.md) for this release.
 No historical numeric result has been overwritten or presented as current accuracy.
+
+[Initial qualified release evidence](releases/178bd57/public-release.json) preserves the previous verified source/digest and its sampled resources. Current values are in the measurement index.

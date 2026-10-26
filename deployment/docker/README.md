@@ -5,7 +5,7 @@
 The image packages the upload UI, API, CLI, exact Python requirements, YOLOv8n ONNX
 and MediaPipe Face Landmarker. Models are checksum-verified at build time. No Git
 clone, cloud account, API key or startup weight download is required for image use.
-The [qualified release](https://github.com/bmaged23/multi-person-attention-tracking/actions/runs/40317220913) passed the exact-image GPU gate, anonymous public pull and real GPU/CPU video jobs.
+The [qualified release](https://github.com/bmaged23/multi-person-attention-tracking/actions/runs/40328669481) passed the exact-image GPU gate, anonymous public pull and real GPU/CPU video jobs.
 
 ## GPU pull and run
 
@@ -94,14 +94,14 @@ See [third-party terms](../../docs/THIRD_PARTY.md) and the root AGPL license.
 
 ## Immutable qualified version
 
-Application source: `178bd577e507b6aaee770cbf050b756411f68d7d`.
+Application source: `63118083303550468225a2ca9966cfb17ee39b98`.
 
 ```text
-bmaged23/multi-person-attention-tracking@sha256:989a26171b94321e4e4541b0ae46789ca6b82e69b986667e49b3e394b5a65956
+bmaged23/multi-person-attention-tracking@sha256:bc953672a844f89de350924d680397b1d6cc659a48c26fafe8b094d176de765c
 ```
 
 Use that reference instead of `:gpu` in both pull and run commands to retain this
-version. Registry compressed size: **2,198,652,265 bytes** (~2.20 GB); Docker-reported
+version. Registry compressed size: **2,198,658,789 bytes** (~2.20 GB); Docker-reported
 local size: **6.68 GB**. These are distinct accounting measures, not two download sizes.
 The GPU gate passed 41 tests, 100 human-box detection cases, synthetic tracking,
 real API artifacts and browser playback. Public distribution then passed both a

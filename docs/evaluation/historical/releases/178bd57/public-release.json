@@ -1,0 +1,15 @@
+{
+  "source_sha": "178bd577e507b6aaee770cbf050b756411f68d7d",
+  "image": "bmaged23/multi-person-attention-tracking@sha256:989a26171b94321e4e4541b0ae46789ca6b82e69b986667e49b3e394b5a65956",
+  "release_run": 40317220913,
+  "workflow_url": "https://github.com/bmaged23/multi-person-attention-tracking/actions/runs/40317220913",
+  "platform": "linux/amd64",
+  "registry_compressed_bytes": 2198652265,
+  "docker_reported_size": "6.68GB",
+  "quality_gate_passed": true,
+  "anonymous_pull_passed": true,
+  "public_gpu_video_job_passed": true,
+  "public_cpu_video_job_passed": true,
+  "public_video_job_frames_each": 50,
+  "scope": "Workflow-verified distribution and real API inference; model quality and native timing are separate evidence."
+}

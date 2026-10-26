@@ -1,6 +1,6 @@
 {
-  "source_sha": "178bd577e507b6aaee770cbf050b756411f68d7d",
-  "image": "ghcr.io/bmaged23/attention-candidates@sha256:989a26171b94321e4e4541b0ae46789ca6b82e69b986667e49b3e394b5a65956",
+  "source_sha": "63118083303550468225a2ca9966cfb17ee39b98",
+  "image": "ghcr.io/bmaged23/attention-candidates@sha256:bc953672a844f89de350924d680397b1d6cc659a48c26fafe8b094d176de765c",
   "policy": {
     "version": 1,
     "scope": "Exposed development regression gate. COCO human-box operating-point metrics, synthetic tracker stress and model-derived workflow regression counts are distinct evidence. Thresholds frozen before container qualification.",
@@ -84,9 +84,9 @@
     "precision": 0.5727272727272728,
     "recall": 0.6923076923076923,
     "f1": 0.6268656716417911,
-    "warm_median_seconds": 0.07169062050024877,
-    "warm_p95_seconds": 0.08476952689966309,
-    "load_seconds": 0.5717470800000228,
+    "warm_median_seconds": 0.0861931254994488,
+    "warm_p95_seconds": 0.12288156770091514,
+    "load_seconds": 1.1733683319998818,
     "manifest_sha256": "aabbc0f3b35e722f849bc976081850ac4a3db048eedf9b70981e82864b0f5b50",
     "scope": "Frozen COCO val subset; human boxes; operating-point matching, not official COCO AP. No crowd ignore metadata in mirror. Tiling and confidence are fixed across runtime comparisons."
   },
@@ -103,9 +103,9 @@
     "precision": 0.6190476190476191,
     "recall": 0.6190476190476191,
     "f1": 0.6190476190476191,
-    "warm_median_seconds": 0.07046543650039894,
-    "warm_p95_seconds": 0.09602658699986932,
-    "load_seconds": 0.35733854199952475,
+    "warm_median_seconds": 0.07669287400040048,
+    "warm_p95_seconds": 0.09271142475017768,
+    "load_seconds": 0.4585217380008544,
     "manifest_sha256": "aab568574081723c3791fa1019bbda738809f6a64d963f54a4bf05a312b30fda",
     "scope": "Frozen COCO val subset; human boxes; operating-point matching, not official COCO AP. No crowd ignore metadata in mirror. Tiling and confidence are fixed across runtime comparisons."
   },
@@ -147,7 +147,7 @@
     {
       "view": "L",
       "status": "completed",
-      "job_seconds": 7.9505589500004135,
+      "job_seconds": 9.731155297000441,
       "frames": 50,
       "tracks": 8,
       "label_counts": {
@@ -158,16 +158,16 @@
         "no_face": 217
       },
       "performance": {
-        "elapsed_seconds": 7.926652961999935,
-        "processed_fps": 6.307831888521707,
+        "elapsed_seconds": 9.698235039000792,
+        "processed_fps": 5.1555768848687675,
         "stage_seconds": {
-          "decode": 0.04830200399919704,
-          "detection_and_landmarks": 7.234081773998696,
-          "scoring_tracking_reporting": 0.10836601500341203,
-          "annotation_encoding": 0.14050481199865317,
-          "final_encoding": 0.3920718319996013,
-          "person_detection": 4.234559038000043,
-          "landmarks": 2.999056882998957
+          "decode": 0.09658905199466972,
+          "detection_and_landmarks": 8.3218586660023,
+          "scoring_tracking_reporting": 0.10775385700071638,
+          "annotation_encoding": 0.14300801799618057,
+          "final_encoding": 1.0247543939985917,
+          "person_detection": 5.324861108001642,
+          "landmarks": 2.99647822299994
         },
         "scope": "Full run includes initialization when backend is owned; detection sub-stages are nested, not additive with detection_and_landmarks."
       }
@@ -175,7 +175,7 @@
     {
       "view": "R",
       "status": "completed",
-      "job_seconds": 8.354305021000073,
+      "job_seconds": 9.428837176999878,
       "frames": 50,
       "tracks": 8,
       "label_counts": {
@@ -186,16 +186,16 @@
         "no_face": 242
       },
       "performance": {
-        "elapsed_seconds": 8.33592935500019,
-        "processed_fps": 5.998130798899774,
+        "elapsed_seconds": 9.41069640599926,
+        "processed_fps": 5.313102509079031,
         "stage_seconds": {
-          "decode": 0.04281821000040509,
-          "detection_and_landmarks": 7.691046580999682,
-          "scoring_tracking_reporting": 0.09203075499863189,
-          "annotation_encoding": 0.13170290800007933,
-          "final_encoding": 0.3749687770005039,
-          "person_detection": 4.737004648000038,
-          "landmarks": 2.953573795997727
+          "decode": 0.045858543995564105,
+          "detection_and_landmarks": 8.242358226998476,
+          "scoring_tracking_reporting": 0.09527494500252942,
+          "annotation_encoding": 0.13660486900516844,
+          "final_encoding": 0.8870633939986874,
+          "person_detection": 5.180665498992312,
+          "landmarks": 3.0611639130074764
         },
         "scope": "Full run includes initialization when backend is owned; detection sub-stages are nested, not additive with detection_and_landmarks."
       }

@@ -58,17 +58,17 @@ Source is AGPL-3.0-only; models and sample media retain their upstream terms.
 
 ## Verified public release
 
-[Passing build, GPU gate, publication and public inference](https://github.com/bmaged23/multi-person-attention-tracking/actions/runs/40317220913).
-Immutable reference: `bmaged23/multi-person-attention-tracking@sha256:989a26171b94321e4e4541b0ae46789ca6b82e69b986667e49b3e394b5a65956`.
+[Passing build, GPU gate, publication and public inference](https://github.com/bmaged23/multi-person-attention-tracking/actions/runs/40328669481).
+Immutable reference: `bmaged23/multi-person-attention-tracking@sha256:bc953672a844f89de350924d680397b1d6cc659a48c26fafe8b094d176de765c`.
 
 The image passed **41 tests**, **100 human-annotated detection cases**, four synthetic
 tracking thresholds, two 50-frame API jobs and real Chromium upload/playback, with
 zero JavaScript errors. Anonymous public pull and actual GPU/CPU-mode video jobs
 both passed. Native detection results remained unchanged in the container.
 
-The two GPU API jobs took **7.95/8.35 s**. Sampled cgroup RAM peaked at **1,160 MiB**,
-whole-device VRAM at **179 MiB**; CPU averaged **237%**, peaked at **330%**, where 100%
-is one core. Thirteen samples cover the API/worker/FFmpeg phase; peaks can be missed.
+The two GPU API jobs took **9.73/9.43 s**. Sampled cgroup RAM peaked at **1,025 MiB**,
+whole-device VRAM at **153 MiB**; CPU averaged **184%**, peaked at **338%**, where 100%
+is one core. Eighteen samples cover the API/worker/FFmpeg phase; peaks can be missed.
 The image is ~2.20 GB compressed in the registry and reports 6.68 GB locally.
 These are development observations on one setup. The heuristic attention score
 has no human attention-accuracy estimate, and the synthetic crossing limitation

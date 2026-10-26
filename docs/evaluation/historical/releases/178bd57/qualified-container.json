@@ -1,0 +1,210 @@
+{
+  "source_sha": "178bd577e507b6aaee770cbf050b756411f68d7d",
+  "image": "ghcr.io/bmaged23/attention-candidates@sha256:989a26171b94321e4e4541b0ae46789ca6b82e69b986667e49b3e394b5a65956",
+  "policy": {
+    "version": 1,
+    "scope": "Exposed development regression gate. COCO human-box operating-point metrics, synthetic tracker stress and model-derived workflow regression counts are distinct evidence. Thresholds frozen before container qualification.",
+    "detection": {
+      "cases": 64,
+      "true_positive_min": 126,
+      "false_positive_max": 94,
+      "false_negative_max": 56,
+      "manifest_sha256": "aabbc0f3b35e722f849bc976081850ac4a3db048eedf9b70981e82864b0f5b50"
+    },
+    "tracking": {
+      "stationary-reorder": 1.0,
+      "slow-motion": 1.0,
+      "short-occlusion": 1.0,
+      "crossing-stress": 0.775
+    },
+    "workflow": {
+      "L": {
+        "source_sha256": "e971552275dd03a3f70e86e05218707648baf12c022130a9cc38c9b13e14b84f",
+        "frames": 50,
+        "tracks": 8,
+        "label_counts": {
+          "attentive": 98,
+          "partial": 0,
+          "non_attentive": 0,
+          "drowsy": 7,
+          "no_face": 217
+        },
+        "original_clip_sha256": "02a8a8c003eaa8f0478468cfc72cf455fea4860ee50a720faadd32fc5726a1da",
+        "fixture": "evaluation/fixtures/ami-L.mkv"
+      },
+      "R": {
+        "source_sha256": "4d99f37de5ac69367d716b23ffe8c5eb561fa4ef4953b22c09b74bfc65c8b851",
+        "frames": 50,
+        "tracks": 8,
+        "label_counts": {
+          "attentive": 57,
+          "partial": 0,
+          "non_attentive": 0,
+          "drowsy": 12,
+          "no_face": 242
+        },
+        "original_clip_sha256": "daf3c9c198501c7009c166a08faadf31d864724fadbcb80bfde8e70b1e449439",
+        "fixture": "evaluation/fixtures/ami-R.mkv"
+      }
+    },
+    "holdout_detection": {
+      "cases": 36,
+      "true_positive_min": 65,
+      "false_positive_max": 40,
+      "false_negative_max": 40,
+      "manifest_sha256": "aab568574081723c3791fa1019bbda738809f6a64d963f54a4bf05a312b30fda"
+    }
+  },
+  "passed": true,
+  "checks": {
+    "development_detection": true,
+    "validation_detection": true,
+    "tracking_complete": true,
+    "tracking_quality": true,
+    "workflow_L": true,
+    "observations_L": true,
+    "video_L": true,
+    "workflow_R": true,
+    "observations_R": true,
+    "video_R": true,
+    "browser_h264_playback": true,
+    "browser_artifacts": true,
+    "browser_javascript": true
+  },
+  "development_detection": {
+    "backend": "onnx",
+    "device": "cuda",
+    "cases": 64,
+    "person_tiles": 2,
+    "confidence": 0.15,
+    "iou_threshold": 0.5,
+    "true_positive": 126,
+    "false_positive": 94,
+    "false_negative": 56,
+    "precision": 0.5727272727272728,
+    "recall": 0.6923076923076923,
+    "f1": 0.6268656716417911,
+    "warm_median_seconds": 0.07169062050024877,
+    "warm_p95_seconds": 0.08476952689966309,
+    "load_seconds": 0.5717470800000228,
+    "manifest_sha256": "aabbc0f3b35e722f849bc976081850ac4a3db048eedf9b70981e82864b0f5b50",
+    "scope": "Frozen COCO val subset; human boxes; operating-point matching, not official COCO AP. No crowd ignore metadata in mirror. Tiling and confidence are fixed across runtime comparisons."
+  },
+  "validation_detection": {
+    "backend": "onnx",
+    "device": "cuda",
+    "cases": 36,
+    "person_tiles": 2,
+    "confidence": 0.15,
+    "iou_threshold": 0.5,
+    "true_positive": 65,
+    "false_positive": 40,
+    "false_negative": 40,
+    "precision": 0.6190476190476191,
+    "recall": 0.6190476190476191,
+    "f1": 0.6190476190476191,
+    "warm_median_seconds": 0.07046543650039894,
+    "warm_p95_seconds": 0.09602658699986932,
+    "load_seconds": 0.35733854199952475,
+    "manifest_sha256": "aab568574081723c3791fa1019bbda738809f6a64d963f54a4bf05a312b30fda",
+    "scope": "Frozen COCO val subset; human boxes; operating-point matching, not official COCO AP. No crowd ignore metadata in mirror. Tiling and confidence are fixed across runtime comparisons."
+  },
+  "tracking": {
+    "cases": 4,
+    "results": [
+      {
+        "case_id": "stationary-reorder",
+        "observations": 80,
+        "identity_switches": 0,
+        "predicted_tracks": 2,
+        "idf1": 1.0
+      },
+      {
+        "case_id": "slow-motion",
+        "observations": 80,
+        "identity_switches": 0,
+        "predicted_tracks": 2,
+        "idf1": 1.0
+      },
+      {
+        "case_id": "short-occlusion",
+        "observations": 75,
+        "identity_switches": 0,
+        "predicted_tracks": 2,
+        "idf1": 1.0
+      },
+      {
+        "case_id": "crossing-stress",
+        "observations": 80,
+        "identity_switches": 2,
+        "predicted_tracks": 2,
+        "idf1": 0.775
+      }
+    ],
+    "scope": "Synthetic perfect boxes with independently generated identity paths; no missed detections. IDF1 uses global one-to-one identity matching. Crossing can be unidentifiable from IoU geometry alone; not a real-world MOT benchmark."
+  },
+  "api_workflows": [
+    {
+      "view": "L",
+      "status": "completed",
+      "job_seconds": 7.9505589500004135,
+      "frames": 50,
+      "tracks": 8,
+      "label_counts": {
+        "attentive": 98,
+        "partial": 0,
+        "non_attentive": 0,
+        "drowsy": 7,
+        "no_face": 217
+      },
+      "performance": {
+        "elapsed_seconds": 7.926652961999935,
+        "processed_fps": 6.307831888521707,
+        "stage_seconds": {
+          "decode": 0.04830200399919704,
+          "detection_and_landmarks": 7.234081773998696,
+          "scoring_tracking_reporting": 0.10836601500341203,
+          "annotation_encoding": 0.14050481199865317,
+          "final_encoding": 0.3920718319996013,
+          "person_detection": 4.234559038000043,
+          "landmarks": 2.999056882998957
+        },
+        "scope": "Full run includes initialization when backend is owned; detection sub-stages are nested, not additive with detection_and_landmarks."
+      }
+    },
+    {
+      "view": "R",
+      "status": "completed",
+      "job_seconds": 8.354305021000073,
+      "frames": 50,
+      "tracks": 8,
+      "label_counts": {
+        "attentive": 57,
+        "partial": 0,
+        "non_attentive": 0,
+        "drowsy": 12,
+        "no_face": 242
+      },
+      "performance": {
+        "elapsed_seconds": 8.33592935500019,
+        "processed_fps": 5.998130798899774,
+        "stage_seconds": {
+          "decode": 0.04281821000040509,
+          "detection_and_landmarks": 7.691046580999682,
+          "scoring_tracking_reporting": 0.09203075499863189,
+          "annotation_encoding": 0.13170290800007933,
+          "final_encoding": 0.3749687770005039,
+          "person_detection": 4.737004648000038,
+          "landmarks": 2.953573795997727
+        },
+        "scope": "Full run includes initialization when backend is owned; detection sub-stages are nested, not additive with detection_and_landmarks."
+      }
+    }
+  ],
+  "browser": {
+    "completed": true,
+    "artifact_links": 3,
+    "javascript_errors": []
+  },
+  "scope": "Actual candidate models, human-box detection metrics, synthetic tracker association, model-derived AMI workflow regression and real browser upload; not measured behavioral attention accuracy."
+}

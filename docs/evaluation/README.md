@@ -5,7 +5,7 @@
 Measurements below are native Linux/WSL2 results on a GTX 1660 Ti with 6 GiB VRAM,
 Python 3.12.15 and the exact checked-in requirements. CUDA accelerates person
 inference; MediaPipe landmarks stay on CPU. No model was trained or fine-tuned.
-The [qualified container release](#verified-container-release--26-october-2026) below records separate image, resource and public-distribution evidence.
+The [current organization release](#organization-release--26-october-2026) below records separate image, resource and public-distribution evidence.
 
 ## Independent detection references
 
@@ -173,7 +173,9 @@ container resources, source commit, digest and anonymous public inference eviden
 when qualification completes.
 
 
-## Verified container release — 26 October 2026
+<a id="verified-container-release--26-october-2026"></a>
+
+## Initial verified container release — 26 October 2026
 
 [Complete passing workflow](https://github.com/bmaged23/multi-person-attention-tracking/actions/runs/40317220913) for source `178bd577e507b6aaee770cbf050b756411f68d7d`.
 Image: `bmaged23/multi-person-attention-tracking@sha256:989a26171b94321e4e4541b0ae46789ca6b82e69b986667e49b3e394b5a65956`.
@@ -203,9 +205,9 @@ reports and annotated video; this verifies usability separately from GPU quality
 metrics. The public image includes production weights; there is no startup download.
 Registry compressed size is 2,198,652,265 bytes; Docker reports 6.68 GB locally.
 
-Evidence: [aggregate gate](measurements/qualified-container.json),
-[container resources](measurements/container-resources.json),
-[public distribution record](measurements/public-release.json). Detailed videos,
+Evidence: [aggregate gate](historical/releases/178bd57/qualified-container.json),
+[container resources](historical/releases/178bd57/container-resources.json),
+[public distribution record](historical/releases/178bd57/public-release.json). Detailed videos,
 JSONL, job outputs and logs are retained privately under the successful CI run ID.
 
 The [first release attempt](https://github.com/bmaged23/multi-person-attention-tracking/actions/runs/40314322941)
@@ -216,3 +218,39 @@ The description was shortened and independently verified; a copied resource-scop
 label was corrected from speech to vision. The new source then passed the full
 pipeline above. No model output, input reference or quality threshold was changed
 to obtain the passing result.
+
+
+## Organization release — 26 October 2026
+
+[Passing complete workflow](https://github.com/bmaged23/multi-person-attention-tracking/actions/runs/40328669481), source `63118083303550468225a2ca9966cfb17ee39b98`.
+Current immutable image: `bmaged23/multi-person-attention-tracking@sha256:bc953672a844f89de350924d680397b1d6cc659a48c26fafe8b094d176de765c`.
+
+Model provisioning now lives under `scripts/setup/`, media generators under
+`scripts/documentation/`, and older research-source helpers under
+`scripts/datasets/research/`. Tool roots, model checksums and Docker provisioning
+were verified after the move. Source/config compatibility entry points, published
+media/report paths, models, gold references and score thresholds remain unchanged.
+
+The exact image again passed 41 tests, 100 human-box detection cases, all four
+tracking non-regression floors, two 50-frame API workflows, decoded videos and
+Chromium upload/H264 playback/all three downloads, with zero JavaScript errors.
+Anonymous public pull and normal GPU and CPU-mode video jobs passed afterward.
+
+API job durations were **9.731 s / 9.429 s**. Eighteen samples recorded cgroup RAM
+mean **924.4 MiB**, peak **1,025.0 MiB**; CPU mean **184.32%**, peak **338.33%**
+(100%=one core). Whole-device VRAM peaked at **153 MiB**; GPU utilization averaged
+**15.67%**, peaked at **34%**. These are new observations on the same development
+setup, not evidence that renaming tools changed inference speed or memory needs.
+Host load, warm state and sampling vary. The initial release measurements above
+remain archived with their original source and scope.
+
+Current evidence: [gate](measurements/qualified-container.json),
+[resources](measurements/container-resources.json),
+[distribution](measurements/public-release.json). Image compressed size is
+**2,198,658,789 bytes**; Docker reports approximately **6.68 GB** locally.
+
+A superseded organization run was cancelled while its hosted system-package
+installation stalled, before model scoring. CI now provisions a pinned, isolated
+FFmpeg executable and only installs host GL libraries if absent; all 41 tests stay
+enabled. Native setup and container FFmpeg are unchanged. This avoids the repeated
+mirror dependency without bypassing the application or quality gate.
